@@ -32,7 +32,7 @@
   const toRibbon = minute => minute <= coarseStart ? minute : coarseStart + (minute-coarseStart)/2;
   const fromRibbon = position => position <= coarseStart ? position : coarseStart + (position-coarseStart)*2;
   let selected = nearest(300), start = 0, span = 1440, timer = null, dragging = false;
-  let animation = null, gesture = null, motionExit = null;
+  let animation = null, gesture = null;
   let cueTime = null, cueFade = null, cueProgress = 0, cueDirection = 1, cueKind = 'step';
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const track = $('track'), scrubber = $('scrubber');
@@ -85,8 +85,6 @@
   function centredStart() { return toRibbon(steps[selected]) - anchor() * span; }
   function stopAnimation() {
     cancelAnimationFrame(animation); animation = null;
-    clearTimeout(motionExit);
-    $('timeline').classList.remove('is-moving');
   }
   function centreRibbon(animate = true, durationMs = 500) {
     stopAnimation();
@@ -94,7 +92,6 @@
     if (!animate || reducedMotion.matches || Math.abs(target-from) < .01) {
       start = target; renderTicks(); hideStepCue(); return;
     }
-    $('timeline').classList.add('is-moving');
     const began = performance.now();
     function frame(now) {
       const progress = Math.min(1, (now-began)/durationMs);
@@ -104,7 +101,6 @@
       if (progress < 1) animation = requestAnimationFrame(frame);
       else {
         animation = null; finishStepCue();
-        motionExit = setTimeout(() => $('timeline').classList.remove('is-moving'), 160);
       }
     }
     animation = requestAnimationFrame(frame);
