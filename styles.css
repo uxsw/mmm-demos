@@ -1,0 +1,144 @@
+:root{color-scheme:light;--lime:#c5e900;--ink:#20211e;--muted:#bfc1b8;--day-accent:#cacc69;--ribbon-height:38px;--ribbon-bottom:calc(58px + env(safe-area-inset-bottom))}*{box-sizing:border-box}body{margin:0;background:#f3f3ef;color:#252720;font-family:Arial,Helvetica,sans-serif}main{max-width:1280px;margin:0 auto;padding:44px 40px}select{font:inherit;color:#272b20;background:#fff;border:1px solid #c8cbbd;border-radius:4px;padding:10px 34px 10px 12px}.forecast{height:560px;position:relative;border:1px solid #c2c5b9;border-radius:7px;overflow:hidden;background:#dadcda}.map{position:absolute;inset:0;overflow:hidden}.timeline{position:absolute;bottom:40px;left:12px;right:12px;height:92px;color:var(--muted);--play-width:54px}.track-row{position:absolute;bottom:0;left:0;right:0;height:var(--ribbon-height);display:flex;align-items:center;background:transparent;transition:background .15s}.timeline:has(.track:hover) .track-row,.timeline:has(#scrubber:focus-visible) .track-row,.timeline:is(.is-playing,.is-dragging,.is-moving) .track-row,.timeline.is-touch .track-row{background:var(--ink)}.play{flex:0 0 48px;width:48px;height:48px;border:0;border-radius:50%;background:var(--lime);color:#172000;font-size:20px;margin-right:6px;box-shadow:0 2px 9px #0003;z-index:5}.play span{display:block}.track{overflow:hidden;position:relative;height:var(--ribbon-height);flex:1;margin-right:8px;min-width:0}.rail{position:absolute;top:18px;height:5px;width:100%;background:#888b85}.ticks{position:absolute;inset:0;opacity:0}.timeline:has(.track:hover) .ticks,.timeline:has(#scrubber:focus-visible) .ticks,.timeline:is(.is-playing,.is-dragging,.is-moving) .ticks,.timeline.is-touch .ticks{opacity:1}.timeline:has(.track:hover) .rail,.timeline:has(#scrubber:focus-visible) .rail,.timeline:is(.is-playing,.is-dragging,.is-moving) .rail,.timeline.is-touch .rail{opacity:0}.tick{position:absolute;bottom:9px;height:9px;width:1px;background:#686b63}.tick.major{height:13px;background:#e1e5d7;width:2px}.marker{position:absolute;top:9px;height:19px;width:19px;background:var(--lime);border:1px solid #405000;border-radius:50%;transform:translateX(-50%);pointer-events:none;z-index:2}.timeline:has(.track:hover) .marker,.timeline:has(#scrubber:focus-visible) .marker,.timeline:is(.is-playing,.is-dragging,.is-moving) .marker{top:0;width:2px;height:34px;border:0;border-radius:0}.selection{left:50%;position:absolute;bottom:49px;display:flex;background-color:var(--lime);color:#202700;height:30px;transform:translateX(-50%);z-index:10;white-space:nowrap}.selection::after{content:"";position:absolute;top:30px;left:var(--stem,50%);height:20px;width:1px;background-color:var(--lime)}button{font-family:inherit;cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #20211e;outline-offset:2px;box-shadow:0 0 0 2px #fff}.selection button{border:0;background-color:transparent;color:inherit;font-size:14px;padding:0 9px}.selection #selected-time{font-size:12px;padding:0 3px}.selection button:disabled{opacity:.35;cursor:default}.selection strong{font-size:14px}.days{position:absolute;right:0;top:-24px;display:flex;padding:5px;background:var(--ink);border-radius:0;gap:2px}.days button{min-height:28px;min-width:28px;color:#ddd;border:0;background:transparent;padding:5px;font-size:12px}.days button[aria-current="date"]{color:var(--lime);text-decoration:underline;text-underline-offset:5px}.day-menu{position:absolute;bottom:39px;left:50%;transform:translateX(-50%);width:128px;max-height:calc(100dvh - 180px);overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#686b63 #292b27;background:#292b27;box-shadow:0 3px 8px #0003}.day-menu button{width:100%;height:44px;display:block;color:#e6e8df;border-bottom:1px solid #50524c}.day-menu button[aria-current="date"]{color:var(--lime);background:#3b3d36}.day-menu[hidden]{display:none}.hover-band{position:absolute;top:0;bottom:0;background:#ffffff26;pointer-events:none}.hover-time{position:absolute;top:6px;padding:3px 6px;background:#55584f;color:#f5f7ed;font-size:12px;transform:translateX(-50%);z-index:3;pointer-events:none}#scrubber{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:grab;touch-action:none;z-index:4}.track:has(input:focus-visible){outline:2px solid #fff;outline-offset:0;box-shadow:0 0 0 4px #20211e}.forecast-footer{position:absolute;bottom:0;left:0;right:0;background:var(--day-accent);color:#20231b;display:flex;align-items:center;gap:5px;padding:5px 8px;font-size:12px;min-height:28px}.forecast-footer strong{background:#f2f0bc;padding:2px 3px;font-size:14px}.forecast-footer span{color:#2828e5;font-size:10px;letter-spacing:.4px}.forecast-footer b{font-weight:normal;color:#222;letter-spacing:0}.below{display:flex;justify-content:space-between;gap:15px;color:#62685a;font-size:12px;padding:10px 0}.below p:first-child{color:#333a2b}@media(max-width:600px){main{padding:24px 14px}.intro{align-items:flex-start;gap:12px;margin-bottom:20px}select{padding:9px 5px;width:94px}.forecast{height:420px}.timeline{left:0;right:0;bottom:38px;--play-width:44px}.play{border-radius:0;width:40px;flex-basis:40px;height:44px;margin-right:4px;box-shadow:none;font-size:17px}.track-row,.track{height:44px;background:var(--ink)}.rail{display:none}.ticks{opacity:1}.tick{bottom:10px}.marker{top:17px}.timeline:has(.track:hover) .marker,.timeline:has(#scrubber:focus-visible) .marker{top:10px;height:19px;width:19px;border-radius:50%;border:1px solid #405000}.selection{height:36px;bottom:55px}.selection::after{top:36px;height:27px}.selection button{min-width:32px}.selection #selected-time{min-width:110px}.days{display:none}.below{display:block;line-height:1.6}.forecast-footer{padding-left:4px}.forecast-footer b{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Motion: quick entry, a short exit grace period, and immediate direct manipulation. */
+.track-row{transition:background-color 340ms ease-out 160ms}
+.ticks,.rail{transition:opacity 340ms ease-out 160ms}
+.marker{transition:width 340ms ease-out 160ms,height 340ms ease-out 160ms,top 340ms ease-out 160ms,border-radius 340ms ease-out 160ms,background-color 260ms ease-out}
+.timeline:has(.track:hover) .track-row,.timeline:has(#scrubber:focus-visible) .track-row,.timeline:is(.is-playing,.is-dragging,.is-moving) .track-row{transition-duration:260ms;transition-delay:0ms}
+.timeline:has(.track:hover) .ticks,.timeline:has(#scrubber:focus-visible) .ticks,.timeline:is(.is-playing,.is-dragging,.is-moving) .ticks,
+.timeline:has(.track:hover) .rail,.timeline:has(#scrubber:focus-visible) .rail,.timeline:is(.is-playing,.is-dragging,.is-moving) .rail,
+.timeline:has(.track:hover) .marker,.timeline:has(#scrubber:focus-visible) .marker,.timeline:is(.is-playing,.is-dragging,.is-moving) .marker{transition-duration:260ms;transition-delay:0ms}
+.hover-band,.hover-time{opacity:0;visibility:hidden;transition:opacity 160ms ease-out,visibility 0s linear 160ms}
+.hover-band.is-visible,.hover-time.is-visible{opacity:1;visibility:visible;transition:opacity 150ms ease-out,visibility 0s}
+.hover-band.is-visible{transition:opacity 150ms ease-out,left 150ms cubic-bezier(.2,.7,.2,1),width 150ms cubic-bezier(.2,.7,.2,1),visibility 0s}
+.play{transition:background-color 180ms ease-out,box-shadow 180ms ease-out}
+.play span{transition:transform 150ms ease-out}
+.selection button,.days button,.day-menu button{transition:background-color 180ms ease-out,box-shadow 150ms ease-out}
+@media(hover:hover){.play:hover{background:#d4f327;box-shadow:0 3px 12px #0004}.selection button:not(:disabled):hover{background-color:#ffffff26}.days button:hover,.day-menu button:hover{background:#ffffff16}}
+.play:active{box-shadow:0 1px 3px #0003;background:#b5d700}
+.play:active span{transform:scale(.92)}
+.selection button:not(:disabled):active{background-color:#00000014;box-shadow:inset 0 1px 3px #0002}
+.days button:active,.day-menu button:active{background:#ffffff24}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* Focus remains distinct for keyboard interaction, without a persistent pointer outline. */
+html[data-input-mode="pointer"] button:focus,html[data-input-mode="pointer"] select:focus{outline:none}
+html[data-input-mode="pointer"] button:focus-visible,html[data-input-mode="pointer"] select:focus-visible{box-shadow:none}
+html[data-input-mode="pointer"] .track:has(input:focus-visible){outline:none;box-shadow:none}
+html[data-input-mode="keyboard"] button:focus,html[data-input-mode="keyboard"] select:focus{outline:2px solid #20211e;outline-offset:2px;box-shadow:0 0 0 2px #fff}
+html[data-input-mode="keyboard"] .track:has(input:focus){outline:2px solid #fff;outline-offset:0;box-shadow:0 0 0 4px #20211e}
+@media(forced-colors:active){html[data-input-mode="keyboard"] button:focus,html[data-input-mode="keyboard"] select:focus,html[data-input-mode="keyboard"] .track:has(input:focus){outline:2px solid Highlight;outline-offset:2px}}
+
+/* The hover range sits inside the ribbon, ending in a joined, rounded time cap. */
+.hover-band{top:auto;bottom:9px;height:20px;background:#4b4d48}
+.tick{height:10px;bottom:14px}
+.tick.major{height:20px;bottom:9px}
+.hover-time{top:auto;bottom:9px;height:20px;display:flex;align-items:center;padding:0 7px;background:#4b4d48;color:#f5f7ed;font-size:12px;line-height:20px;transform:none;border-left:2px solid #e1e5d7;border-radius:0 10px 10px 0;white-space:nowrap}
+.hover-time[data-side="left"]{border-left:0;border-right:2px solid #e1e5d7;border-radius:10px 0 0 10px}
+@media(max-width:600px){.hover-band,.hover-time{bottom:10px}.tick{bottom:15px}.tick.major{bottom:10px}}
+
+/* Generous step targets; equal widths preserve the centred timestamp. */
+.selection{height:44px}
+.selection::after{top:100%;pointer-events:none}
+.selection > button{min-height:44px}
+.selection #previous,.selection #next{width:44px;min-width:44px;flex:0 0 44px;padding:0;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background-color 180ms ease-out,color 180ms ease-out,box-shadow 150ms ease-out}
+.selection #selected-time{padding:0 8px}
+.day-menu{bottom:calc(100% + 8px)}
+@media(hover:hover){.selection #previous:not(:disabled):hover,.selection #next:not(:disabled):hover{background-color:#b4d600;color:#202700}}
+.selection #previous:not(:disabled):active,.selection #next:not(:disabled):active{background-color:#a4c400;color:#202700;box-shadow:none}
+
+/* A 30px visual strip within 44px hit targets, with 7px transparent padding per side. */
+.selection{background-color:transparent;background-image:linear-gradient(to bottom,transparent 7px,var(--lime) 7px,var(--lime) 37px,transparent 37px)}
+.selection > button{background-clip:content-box}
+.selection #previous,.selection #next{padding:7px 0;background-clip:content-box}
+.selection #selected-time{padding:7px 8px;background-clip:content-box}
+.selection::after{top:37px;height:27px}
+@media(max-width:600px){.selection::after{height:34px}}
+
+/* A coloured swell deforms the idle rail and settles into the centre. */
+.step-cue{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;z-index:1;transition:opacity 220ms ease-out}
+.step-cue path{fill:url(#swell-gradient)}
+.step-cue.is-visible{opacity:1;transition-duration:70ms}
+.timeline:has(.track:hover) .step-cue,.timeline:has(#scrubber:focus-visible) .step-cue,.timeline:is(.is-playing,.is-dragging,.is-moving) .step-cue{opacity:0}
+.selection #previous,.selection #next{position:relative}
+.selection #previous::before,.selection #next::before{content:"";position:absolute;inset:7px 0;background:#647b00;opacity:0;pointer-events:none;transform:scaleX(.35)}
+.selection #previous.is-pulsing::before,.selection #next.is-pulsing::before{animation:step-press 440ms cubic-bezier(.2,.7,.2,1)}
+@keyframes step-press{0%{opacity:.28;transform:scaleX(.35)}45%{opacity:.16;transform:scaleX(1)}100%{opacity:0;transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){.step-cue{display:none}}
+
+@media(max-width:600px){.step-cue{display:none}}
+
+/* Map-first application shell. Each overlay sits above the map's own stacking context. */
+html,body,main{width:100%;height:100%;overflow:hidden}
+main{max-width:none;margin:0;padding:0}
+.forecast{position:absolute;inset:0;height:auto;border:0;border-radius:0;isolation:isolate}
+.map{z-index:0;background:#dce4e2}
+.map .leaflet-tile-pane{filter:saturate(.35)}
+.intro{position:absolute;top:20px;left:24px;right:24px;margin:0;z-index:2;align-items:flex-start;pointer-events:none}
+.timeline{z-index:2;bottom:var(--ribbon-bottom);left:24px;right:24px;pointer-events:none}
+.timeline .selection,.timeline .track-row{pointer-events:auto}
+/* Day shortcuts overlay the right end of the timeline rail. */
+.forecast > .days{top:auto;bottom:var(--ribbon-bottom);right:24px;height:var(--ribbon-height);align-items:center;z-index:3}
+.forecast-footer{z-index:2;padding-bottom:max(5px,env(safe-area-inset-bottom))}
+.map .leaflet-bottom{bottom:30px}
+.map .leaflet-control-attribution{font-size:10px;background:#ffffffe6}
+.map .leaflet-top.leaflet-right{top:14px;right:14px}
+.map .leaflet-bar{border:1px solid #c8cbbd;box-shadow:0 2px 10px #2333261a}
+.map .leaflet-bar a{width:34px;height:34px;line-height:34px;color:#30372b}
+.map-message{position:absolute;top:150px;left:24px;right:78px;max-width:440px;z-index:2;background:#fffffff2;padding:12px 16px;border-radius:6px;font-size:13px;line-height:1.5}
+.map-message[hidden]{display:none}
+.below{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:600px){
+  .map .leaflet-top.leaflet-right{top:2px;right:2px}
+  .map-message{top:145px;left:12px;font-size:12px}
+  .timeline{left:0;right:0;bottom:calc(56px + env(safe-area-inset-bottom))}
+  .map .leaflet-bottom{bottom:calc(30px + env(safe-area-inset-bottom))}
+}
+
+/* Stable numerals, precise icon geometry, and direct-manipulation feedback. */
+.selection,.hover-time{font-variant-numeric:tabular-nums}
+.selection #selected-time{min-width:104px}
+.play{display:grid;place-items:center;padding:0}
+.play span,.play svg{display:block}
+.play .pause-shape,.play .is-paused .play-shape{display:none}
+.play .is-paused .pause-shape{display:block}
+.timeline.is-dragging #scrubber{cursor:grabbing}
+.timeline.is-dragging,.days,.selection{user-select:none;-webkit-user-select:none}
+.days button:focus-visible,.day-menu button:focus-visible{position:relative;z-index:1}
+@media(max-width:600px){
+  .play{width:44px;flex-basis:44px}
+  .play svg{width:21px;height:21px}
+  .timeline .marker,.timeline:has(.track:hover) .marker,.timeline:has(#scrubber:focus-visible) .marker,.timeline:is(.is-playing,.is-dragging,.is-moving) .marker{top:14px;width:19px;height:19px;border:1px solid #405000;border-radius:50%}
+  .selection #selected-time{min-width:110px}
+}
+@media(pointer:coarse) and (min-width:601px){
+  .timeline.is-touch .ticks{opacity:1}
+  .timeline.is-touch .rail{opacity:0}
+}
+
+/* Grains pass through a quiet focus lens; footer-coloured flags locate UTC midnight. */
+.tick{transform-origin:center center;pointer-events:none}
+.tick.midnight-tick{visibility:hidden}
+.day-boundaries{position:absolute;inset:0;pointer-events:none;z-index:3}
+.day-boundary{position:absolute;top:0;bottom:0;left:0;width:2px;color:var(--day-accent)}
+.day-boundary::after{content:"";position:absolute;top:15px;bottom:6px;left:0;width:2px;background:currentColor}
+.day-boundary>span{position:absolute;top:2px;left:-5px;width:12px;height:7px;color:inherit;text-align:center;font-size:8px;line-height:7px;font-weight:600}
+.day-boundary.at-centre::after{opacity:0}
+.day-boundary[hidden]{display:none}
+@media(max-width:600px){
+  .day-boundary>span{top:4px}
+  .day-boundary::after{top:18px;bottom:7px}
+}
+
+/* Keep the selected indicator below the separate day-letter row. */
+@media(min-width:601px){
+  .timeline:has(.track:hover) .marker,.timeline:has(#scrubber:focus-visible) .marker,.timeline:is(.is-playing,.is-dragging,.is-moving) .marker{top:9px;height:25px}
+}
+
+/* Day landmarks share the ribbon's reveal and exit timing. */
+.day-boundaries{opacity:0;transition:opacity 340ms ease-out 160ms}
+.timeline:has(.track:hover) .day-boundaries,
+.timeline:has(#scrubber:focus-visible) .day-boundaries,
+.timeline:is(.is-playing,.is-dragging,.is-moving,.is-touch) .day-boundaries{opacity:1;transition-duration:260ms;transition-delay:0ms}
+@media(max-width:600px){.day-boundaries{opacity:1}}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Forecast timeline</title><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""><link rel="stylesheet" href="styles.css"><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script><script src="map.js" defer></script><script src="timeline.js" defer></script></head>
+<body>
+<main>
+
+<section class="forecast" aria-label="Forecast map with interactive timeline">
+<div class="map" id="map" role="region" aria-label="Interactive map. Drag to pan; use plus and minus to zoom."></div>
+<p class="map-message" id="map-message" role="status" hidden></p>
+<nav class="days" id="days" aria-label="Jump to day"></nav>
+<div class="timeline" id="timeline">
+<div class="selection" id="selection"><button id="previous" aria-label="Previous forecast step"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><polyline points="10 4 6 8 10 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button id="selected-time" aria-expanded="false" aria-controls="day-menu">Tue <strong>17:00</strong> UTC</button><button id="next" aria-label="Next forecast step"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><polyline points="6 4 10 8 6 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div id="day-menu" class="day-menu" hidden></div></div>
+<div class="track-row"><button class="play" id="play" aria-label="Play forecast" aria-pressed="false"><span id="play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><path class="play-shape" d="M8 5 19 12 8 19Z" fill="currentColor"/><path class="pause-shape" d="M7 5H10V19H7ZM14 5H17V19H14Z" fill="currentColor"/></svg></span></button><div class="track" id="track"><div class="rail"></div><div class="hover-band" id="hover-band" hidden></div><div class="ticks" id="ticks" aria-hidden="true"></div><svg class="step-cue" id="step-cue" aria-hidden="true" focusable="false"><defs><linearGradient id="swell-gradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#888b85"/><stop id="swell-shade" offset="50%" stop-color="#747871"/><stop offset="1" stop-color="#888b85"/></linearGradient></defs><path id="step-swell"></path></svg><div class="marker" id="marker"></div><output id="hover-time" class="hover-time" hidden></output><input id="scrubber" type="range" min="0" max="100" value="0" aria-label="Forecast time"></div></div>
+</div>
+<div class="forecast-footer"><strong>Forecast</strong><span>UPDATED <b>15:05 (UTC) Tue 15 Sep 2026</b></span></div>
+</section>
+<div class="below"><p id="status" aria-live="polite">Selected forecast: Tuesday, 17:00 UTC.</p></div>
+
+</main>
+</body></html>
