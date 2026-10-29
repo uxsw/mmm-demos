@@ -174,6 +174,7 @@
     const coarse = t >= coarseStart;
     scrubber.value=selected; scrubber.setAttribute('aria-valuetext', `${day(t)} ${time(t)} UTC${coarse ? ', 3-hour steps, compressed spacing' : ''}`);
     $('selected-time').innerHTML=`${day(t)} <strong>${time(t)}</strong> UTC`;
+    $('selected-time').setAttribute('aria-label', `${day(t)} ${time(t)} UTC. Choose forecast day or enter time`);
     $('marker').style.left = anchor()*100+'%';
     $('previous').disabled=selected===0; $('next').disabled=selected===steps.length-1;
     document.querySelectorAll('[data-day]').forEach(b=> { if(b.dataset.day===dayKey(t)) b.setAttribute('aria-current','date'); else b.removeAttribute('aria-current'); });
@@ -197,6 +198,7 @@
     if(manual) announce();
   }
   function stepWithFeedback(button, direction) {
+    closeMenu();
     button.classList.remove('is-pulsing');
     if (!reducedMotion.matches) {
       void button.offsetWidth;
@@ -210,32 +212,68 @@
     $('selected-time').setAttribute('aria-expanded','false');
     if (restoreFocus && wasOpen) $('selected-time').focus({preventScroll:true});
   }
+  function openMenu(initialDigit = '') {
+    const input = $('time-input');
+    input.value = initialDigit || time(steps[selected]);
+    input.removeAttribute('aria-invalid');
+    $('time-result').textContent = 'Type four digits, e.g. 1830';
+    $('day-menu').hidden = false;
+    $('selected-time').setAttribute('aria-expanded', 'true');
+    input.focus({preventScroll:true});
+    if (!initialDigit) input.select();
+  }
+  $('time-input').addEventListener('input', () => {
+    const input = $('time-input');
+    const value = input.value.trim();
+    const match = /^(?:([01]\d|2[0-3]):?([0-5]\d))$/.exec(value);
+    if (!match) {
+      const incomplete = value.replace(':', '').length < 4;
+      if (incomplete) input.removeAttribute('aria-invalid');
+      else input.setAttribute('aria-invalid', 'true');
+      $('time-result').textContent = incomplete ? 'Type four digits, e.g. 1830' : 'Enter a time from 0000 to 2359';
+      return;
+    }
+    input.removeAttribute('aria-invalid');
+    const requested = Number(match[1])*60 + Number(match[2]);
+    const key = dayKey(steps[selected]);
+    const candidates = steps.map((minute, index) => ({minute, index})).filter(step => dayKey(step.minute) === key);
+    const target = candidates.reduce((best, step) => {
+      const difference = Math.abs(date(step.minute).getUTCHours()*60 + date(step.minute).getUTCMinutes() - requested);
+      return difference < best.difference ? {index:step.index, difference} : best;
+    }, {index:candidates[0].index, difference:Infinity});
+    commit(target.index, true, 650, true, 'day');
+    const reached = steps[target.index];
+    $('time-result').textContent = target.difference === 0
+      ? `Showing ${day(reached)} ${time(reached)} UTC`
+      : `Nearest available: ${day(reached)} ${time(reached)} UTC`;
+  });
   days.forEach((key, dayIndex) => {
     const t=(Date.parse(key+'T00:00:00Z')-base)/60000;
-    for(const parent of [$('days'),$('day-menu')]) {
+    for(const parent of [$('days'),$('day-options')]) {
       const b=document.createElement('button'); b.type='button'; b.textContent=dayIndex === 0 ? 'Today' : day(t); b.dataset.day=key; b.setAttribute('aria-label',`Jump to ${date(t).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'})}`);
-      b.addEventListener('click',()=>{ const current=date(steps[selected]); commit(nearest(t+current.getUTCHours()*60+current.getUTCMinutes()), true, 950, true, 'day'); closeMenu(parent === $('day-menu')); }); parent.append(b);
+      b.addEventListener('click',()=>{ const current=date(steps[selected]); commit(nearest(t+current.getUTCHours()*60+current.getUTCMinutes()), true, 950, true, 'day'); closeMenu(parent === $('day-options')); }); parent.append(b);
     }
   });
   $('previous').addEventListener('click',()=>stepWithFeedback($('previous'),-1));
   $('next').addEventListener('click',()=>stepWithFeedback($('next'),1));
   $('selected-time').addEventListener('click',()=> {
-    const open=$('day-menu').hidden;
-    $('day-menu').hidden=!open;
-    $('selected-time').setAttribute('aria-expanded',String(open));
-    if (open && document.documentElement.dataset.inputMode === 'keyboard') {
-      ($('day-menu').querySelector('[aria-current]') || $('day-menu').firstElementChild).focus();
+    if ($('day-menu').hidden) openMenu(); else closeMenu();
+  });
+  $('selected-time').addEventListener('keydown', e => {
+    if (/^[0-9]$/.test(e.key) && $('day-menu').hidden) {
+      e.preventDefault();
+      openMenu(e.key);
     }
   });
   $('day-menu').addEventListener('keydown', e => {
-    const buttons = [...$('day-menu').children];
+    const buttons = [...$('day-options').children];
     const index = buttons.indexOf(document.activeElement);
     let next;
-    if (e.key === 'ArrowDown') next = (index+1)%buttons.length;
-    if (e.key === 'ArrowUp') next = (index-1+buttons.length)%buttons.length;
-    if (e.key === 'Home') next = 0;
-    if (e.key === 'End') next = buttons.length-1;
-    if (next !== undefined) { e.preventDefault(); buttons[next].focus(); }
+    if (e.key === 'ArrowDown' && index >= 0) next = index === buttons.length-1 ? -1 : index+1;
+    if (e.key === 'ArrowUp') next = index < 0 ? buttons.length-1 : (index-1+buttons.length)%buttons.length;
+    if (e.key === 'Home' && index >= 0) next = 0;
+    if (e.key === 'End' && index >= 0) next = buttons.length-1;
+    if (next !== undefined) { e.preventDefault(); (next < 0 ? $('time-input') : buttons[next]).focus(); }
   });
   $('selection').addEventListener('focusout', e => {
     if (!$('selection').contains(e.relatedTarget)) closeMenu();
