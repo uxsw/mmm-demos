@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#061f2d" />
+    <title>MAVIS accordion navigation prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="prototype prototype--standalone">
+      <section class="phone-stage" aria-label="Accordion mobile navigation prototype">
+        <div class="menu-overlay" id="menu-overlay">
+          <header class="menu-header">
+            <strong>Menu</strong>
+            <button class="icon-button" id="close-menu" type="button" aria-label="Close menu">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg>
+            </button>
+          </header>
+          <div class="menu-body">
+            <div class="search-row">
+              <label class="search-field">
+                <span class="sr-only">Search navigation</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6" /><path d="m16 16 4 4" /></svg>
+                <input id="nav-search" type="search" placeholder="search" autocomplete="off" />
+              </label>
+              <button class="profile-button" type="button" aria-label="Open account menu">M</button>
+            </div>
+            <p class="search-summary" id="search-summary" role="status" aria-live="polite"></p>
+            <nav id="navigation" aria-label="Primary navigation"></nav>
+          </div>
+          <footer class="menu-footer">© Crown copyright</footer>
+        </div>
+      </section>
+    </main>
+    <script src="nav-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

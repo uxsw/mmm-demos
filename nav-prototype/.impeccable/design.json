@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T15:48:37Z",
+  "title": "Design System: MAVIS Navigation Prototype",
+  "extensions": {
+    "colorMeta": {
+      "canvas": { "role": "neutral", "displayName": "Runway Canvas", "canonical": "#252626", "tonalRamp": ["#111212", "#252626", "#3b3d3d", "#555757", "#707272", "#929494", "#babbbb", "#f0f1f1"] },
+      "desktop-canvas": { "role": "neutral", "displayName": "Desktop Night Canvas", "canonical": "#101619", "tonalRamp": ["#080d0f", "#101619", "#263034", "#3f4a4e", "#5b666a", "#7b8589", "#a8afb2", "#e9edee"] },
+      "chrome": { "role": "neutral", "displayName": "Black-box Chrome", "canonical": "#11191d", "tonalRamp": ["#081014", "#11191d", "#243036", "#3b484e", "#566269", "#747f84", "#a1aaae", "#e7ebed"] },
+      "desktop-chrome": { "role": "neutral", "displayName": "Desktop Chrome", "canonical": "#171b1e", "tonalRamp": ["#0b0e10", "#171b1e", "#2c3337", "#444c50", "#60686c", "#80878b", "#acb1b4", "#eceeef"] },
+      "desktop-hover": { "role": "neutral", "displayName": "Desktop Hover Slate", "canonical": "#243238", "tonalRamp": ["#10181c", "#243238", "#3b4b52", "#55656c", "#708087", "#919da2", "#b8c0c3", "#eef1f2"] },
+      "ink": { "role": "neutral", "displayName": "Flight Deck Ink", "canonical": "#061f2d", "tonalRamp": ["#03151f", "#061f2d", "#12394b", "#2c5364", "#4c6e7c", "#718c97", "#a5b5bb", "#e8eef0"] },
+      "ink-deep": { "role": "neutral", "displayName": "Deep Ink", "canonical": "#041822", "tonalRamp": ["#020f16", "#041822", "#102f3e", "#294959", "#486571", "#6d848d", "#a1b0b6", "#e7edef"] },
+      "ink-raised": { "role": "neutral", "displayName": "Raised Navigation Blue", "canonical": "#0b4d73", "tonalRamp": ["#06253a", "#0b3a59", "#0b4d73", "#23698e", "#4785a5", "#70a2bc", "#a4c4d3", "#e8f0f4"] },
+      "ink-active": { "role": "neutral", "displayName": "Active Navigation Blue", "canonical": "#126695", "tonalRamp": ["#082b42", "#0c496c", "#126695", "#2c81ae", "#539bc0", "#7bb5d1", "#acd1df", "#eaf2f5"] },
+      "wayfinding-wash": { "role": "neutral", "displayName": "Wayfinding Wash", "canonical": "rgba(18, 102, 149, 0.24)", "tonalRamp": ["rgba(8, 43, 66, 0.24)", "rgba(12, 73, 108, 0.24)", "rgba(18, 102, 149, 0.24)", "rgba(44, 129, 174, 0.24)", "rgba(83, 155, 192, 0.24)", "rgba(123, 181, 209, 0.24)", "rgba(172, 209, 223, 0.24)", "rgba(234, 242, 245, 0.24)"] },
+      "line": { "role": "neutral", "displayName": "Structural Blue", "canonical": "#2c83aa", "tonalRamp": ["#0b2d3c", "#165570", "#2c83aa", "#4f9bbb", "#73b2ca", "#99c9d8", "#c1dfe7", "#edf5f7"] },
+      "line-soft": { "role": "neutral", "displayName": "Soft Structural Blue", "canonical": "rgba(108, 191, 229, 0.28)", "tonalRamp": ["rgba(25, 71, 92, 0.28)", "rgba(45, 106, 134, 0.28)", "rgba(72, 148, 182, 0.28)", "rgba(108, 191, 229, 0.28)", "rgba(143, 205, 233, 0.28)", "rgba(176, 220, 240, 0.28)", "rgba(207, 235, 247, 0.28)", "rgba(240, 249, 252, 0.28)"] },
+      "text": { "role": "neutral", "displayName": "Operational White", "canonical": "#f4f8fb", "tonalRamp": ["#1c2429", "#38434a", "#59656d", "#7c8992", "#a0adb5", "#c2ccd2", "#dce4e9", "#f4f8fb"] },
+      "text-muted": { "role": "neutral", "displayName": "Muted Sky", "canonical": "#b8cfda", "tonalRamp": ["#1a2b33", "#354b56", "#526d7a", "#718f9d", "#91afbd", "#b8cfda", "#d5e2e8", "#f1f6f8"] },
+      "cyan": { "role": "primary", "displayName": "Instrument Cyan", "canonical": "#6cc9f3", "tonalRamp": ["#07324a", "#0c5a80", "#1685b6", "#36acd9", "#6cc9f3", "#9ad9f6", "#c6e9f8", "#eef9fc"] },
+      "desktop-cyan": { "role": "primary", "displayName": "Desktop Instrument Cyan", "canonical": "#69c8f2", "tonalRamp": ["#073149", "#0c597f", "#1684b5", "#34abd8", "#69c8f2", "#98d8f5", "#c5e8f8", "#edf9fc"] },
+      "lime": { "role": "secondary", "displayName": "Category Lime", "canonical": "#c3cf3d", "tonalRamp": ["#303507", "#555e0e", "#7e8a17", "#a5b524", "#c3cf3d", "#d7df72", "#e8eca6", "#f7f8df"] },
+      "brand-lime": { "role": "secondary", "displayName": "Brand Lime", "canonical": "#c9eb13", "tonalRamp": ["#303900", "#566800", "#7f9800", "#a8c900", "#c9eb13", "#daf15a", "#e9f59a", "#f8fce0"] },
+      "yellow": { "role": "tertiary", "displayName": "Attention Yellow", "canonical": "#ffdc72", "tonalRamp": ["#473401", "#775a05", "#aa830e", "#dcb01f", "#ffdc72", "#ffe79d", "#fff0c4", "#fff9eb"] },
+      "focus": { "role": "tertiary", "displayName": "Focus Gold", "canonical": "#ffdb4d", "tonalRamp": ["#443300", "#755900", "#a98200", "#dbaa0a", "#ffdb4d", "#ffe582", "#ffefb3", "#fff9e5"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Launcher Title", "purpose": "The launcher instruction Open menu." },
+      "launcher-option": { "displayName": "Launcher Option", "purpose": "The Accordion and Drilling journey links." },
+      "headline": { "displayName": "Headline", "purpose": "Top-level accordion triggers and drill-in root rows." },
+      "title": { "displayName": "Title", "purpose": "Menu identity, drill-in screen title, and panel headings." },
+      "body": { "displayName": "Body", "purpose": "Destination chips and compact operational copy." },
+      "label": { "displayName": "Label", "purpose": "Tracked uppercase mobile map-layer group labels." },
+      "desktop-nav": { "displayName": "Desktop Navigation", "purpose": "Primary tabs, the Map secondary bar, and quick-layer shortcuts." },
+      "desktop-layer": { "displayName": "Desktop Layer", "purpose": "The 26 links in the six-column desktop mega panel." },
+      "desktop-layer-label": { "displayName": "Desktop Layer Label", "purpose": "Tracked uppercase headings for the eight desktop layer groups." }
+    },
+    "shadows": [
+      { "name": "device-ambient", "value": "0 18px 44px rgba(0, 0, 0, 0.28)", "purpose": "Separates the centered desktop frame from its canvas; removed on mobile." },
+      { "name": "switch-thumb", "value": "0 2px 5px rgba(0, 0, 0, 0.3)", "purpose": "Keeps the white toggle thumb legible against either track state." },
+      { "name": "desktop-header", "value": "0 5px 20px rgba(0, 0, 0, 0.32)", "purpose": "Separates the desktop navigation stack from the weather-map workspace." },
+      { "name": "desktop-mega-panel", "value": "0 12px 22px rgba(0, 0, 0, 0.36)", "purpose": "Places an open desktop mega panel above the workspace." }
+    ],
+    "motion": [
+      { "name": "control-state", "value": "150ms ease-out", "purpose": "Rotates mobile accordion chevrons and moves toggle states; desktop primary chevrons remain static." },
+      { "name": "drill-in-enter", "value": "180ms cubic-bezier(.2,.8,.2,1)", "purpose": "Settles a child navigation screen from right to left without moving the pinned outer chrome." },
+      { "name": "desktop-hover-open", "value": "110ms", "purpose": "Delays desktop menu preview until pointer intent is credible." },
+      { "name": "desktop-hover-close", "value": "260ms", "purpose": "Allows pointer travel between desktop triggers and panels before restoring Map." },
+      { "name": "desktop-panel-enter", "value": "210ms clip/fade", "purpose": "Reveals Briefing and Regional as overlays while the Map sub-navigation remains visually in place behind them." },
+      { "name": "desktop-panel-exit", "value": "150ms clip/fade", "purpose": "Dismisses desktop dropdown overlays without rotating primary chevrons or moving layout." },
+      { "name": "desktop-highlight-first-entry", "value": "in-place; no travel", "purpose": "Places the shared dark highlight directly beneath the first hovered or focused Balloon, Briefing, or Regional target." },
+      { "name": "desktop-highlight-move", "value": "260ms cubic-bezier(.2,.8,.2,1) transform", "purpose": "Glides one shared dark highlight between Balloon, Briefing, and Regional; direct-link movement closes dropdowns without breaking continuity." },
+      { "name": "reduced-motion", "value": "0.01ms; drill-in animation none; desktop panel and highlight motion near-instant", "purpose": "Effectively removes mobile transitions and makes desktop dropdown overlays and shared-highlight movement near-instant." }
+    ],
+    "breakpoints": [
+      { "name": "mobile-stage", "value": "820px" },
+      { "name": "narrow-mobile", "value": "380px" },
+      { "name": "desktop-navigation", "value": "1024px" }
+    ]
+  },
+  "components": [
+      {
+        "name": "Search Field",
+        "kind": "input",
+        "refersTo": "search-field",
+        "description": "Pill-shaped navigation search with cyan wayfinding and yellow caret emphasis.",
+        "html": "<label class=\"ds-search\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><circle cx=\"11\" cy=\"11\" r=\"6\"/><path d=\"m16 16 4 4\"/></svg><input type=\"search\" placeholder=\"search\" aria-label=\"Search navigation\"></label>",
+        "css": ".ds-search { display:grid; width:100%; height:46px; grid-template-columns:44px minmax(0,1fr); align-items:center; border-radius:24px; background:var(--ink-raised,#0b4d73); } .ds-search:focus-within { outline:2px solid var(--cyan,#6cc9f3); outline-offset:2px; } .ds-search svg { width:22px; margin-left:15px; fill:none; stroke:var(--cyan,#6cc9f3); stroke-width:2; } .ds-search input { min-width:0; height:100%; padding:0 14px 0 2px; color:var(--text,#f4f8fb); background:transparent; border:0; outline:0; font:inherit; caret-color:var(--yellow,#ffdc72); } .ds-search input::placeholder { color:#8cc6e2; opacity:1; }"
+      },
+      {
+        "name": "Profile Button",
+        "kind": "button",
+        "refersTo": "profile-button",
+        "description": "Compact circular account control using the system's attention signal.",
+        "html": "<button class=\"ds-profile\" type=\"button\" aria-label=\"Open account menu\">M</button>",
+        "css": ".ds-profile { width:34px; height:34px; padding:0; color:#1d2a2f; font:800 1rem \"Trebuchet MS\",\"Segoe UI\",sans-serif; background:var(--yellow,#ffdc72); border:0; border-radius:50%; cursor:pointer; } .ds-profile:hover { filter:brightness(1.04); } .ds-profile:focus-visible { outline:2px solid var(--focus,#ffdb4d); outline-offset:2px; }"
+      },
+      {
+        "name": "Mobile Accordion Trigger",
+        "kind": "nav",
+        "refersTo": "nav-trigger",
+        "description": "Mobile full-width navigation row with a rotating disclosure chevron; desktop primary chevrons remain static.",
+        "html": "<button class=\"ds-nav-trigger\" type=\"button\" aria-expanded=\"false\">Map</button>",
+        "css": ".ds-nav-trigger { position:relative; display:flex; width:100%; min-height:44px; align-items:center; justify-content:space-between; gap:12px; padding:8px 5px; color:var(--text,#f4f8fb); font:800 1rem/1.2 \"Trebuchet MS\",\"Segoe UI\",sans-serif; letter-spacing:.02em; text-align:left; background:transparent; border:0; cursor:pointer; } .ds-nav-trigger::after { content:\"\"; width:7px; height:7px; margin-right:3px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(45deg) translateY(-2px); transition:transform 150ms ease-out; } .ds-nav-trigger[aria-expanded=\"true\"]::after { transform:rotate(225deg) translate(-1px,-1px); } .ds-nav-trigger:hover { color:var(--cyan,#6cc9f3); } .ds-nav-trigger:focus-visible { outline:2px solid var(--focus,#ffdb4d); outline-offset:2px; }"
+      },
+      {
+        "name": "Drill-in Root Row",
+        "kind": "nav",
+        "refersTo": "drill-root-row",
+        "description": "Full-width root category row that opens a dedicated history-backed child screen.",
+        "html": "<button class=\"ds-drill-row\" type=\"button\"><span>Map</span><svg aria-hidden=\"true\" viewBox=\"0 0 20 20\"><path d=\"m7 4 6 6-6 6\"/></svg></button>",
+        "css": ".ds-drill-row { display:flex; width:100%; min-height:52px; align-items:center; justify-content:space-between; gap:16px; padding:8px 5px; color:var(--text,#f4f8fb); font:800 1rem/1.2 \"Trebuchet MS\",\"Segoe UI\",sans-serif; letter-spacing:.02em; text-align:left; background:transparent; border:0; border-bottom:1px solid transparent; cursor:pointer; } .ds-drill-row:hover { background:var(--wayfinding-wash,rgba(18,102,149,.24)); border-bottom-color:var(--line-soft,rgba(108,191,229,.28)); } .ds-drill-row:focus-visible { outline:2px solid var(--focus,#ffdb4d); outline-offset:2px; } .ds-drill-row svg { width:20px; flex:0 0 20px; fill:none; stroke:var(--cyan,#6cc9f3); stroke-width:2; }"
+      },
+      {
+        "name": "Drill-in Screen Header",
+        "kind": "nav",
+        "refersTo": "drill-screen-header",
+        "description": "Sticky child-screen header with an explicit Back control and independently centered category title.",
+        "html": "<header class=\"ds-screen-header\"><button class=\"ds-screen-back\" type=\"button\" aria-label=\"Back to main menu\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"m15 5-7 7 7 7\"/></svg><span>Back</span></button><h1>Map</h1></header>",
+        "css": ".ds-screen-header { position:sticky; top:0; z-index:4; display:grid; grid-template-columns:92px minmax(0,1fr) 92px; min-height:56px; align-items:center; padding:0 8px; color:var(--text,#f4f8fb); background:var(--ink,#061f2d); border-bottom:1px solid var(--cyan,#6cc9f3); } .ds-screen-header h1 { grid-column:2; margin:0; font:800 1rem/1.2 \"Trebuchet MS\",\"Segoe UI\",sans-serif; letter-spacing:.01em; text-align:center; } .ds-screen-back { display:inline-flex; min-height:44px; align-items:center; gap:3px; padding:0 6px 0 2px; color:var(--cyan,#6cc9f3); font:700 1rem/1.2 \"Trebuchet MS\",\"Segoe UI\",sans-serif; background:transparent; border:0; cursor:pointer; } .ds-screen-back:hover { color:var(--text,#f4f8fb); } .ds-screen-back:focus-visible { outline:2px solid var(--focus,#ffdb4d); outline-offset:2px; } .ds-screen-back svg { width:22px; fill:none; stroke:currentColor; stroke-width:2; }"
+      },
+      {
+        "name": "Destination Chip",
+        "kind": "chip",
+        "refersTo": "nav-link",
+        "description": "Wrapping destination link for dense reports and map-layer inventories.",
+        "html": "<a class=\"ds-nav-link\" href=\"#surface-visibility\"><span class=\"ds-item-icon\" aria-hidden=\"true\"></span><span>Surface Visibility</span></a>",
+        "css": ".ds-nav-link { display:inline-flex; min-height:38px; align-items:center; gap:6px; padding:7px 8px; color:#dcecf3; font:400 .88rem/1.25 \"Trebuchet MS\",\"Segoe UI\",sans-serif; text-decoration:none; background:var(--ink-raised,#0b4d73); border:0; border-radius:2px; cursor:pointer; } .ds-nav-link:hover { background:var(--ink-active,#126695); } .ds-nav-link:focus-visible,.ds-nav-link[aria-current=\"page\"] { color:#fff; outline:2px solid var(--yellow,#ffdc72); outline-offset:1px; } .ds-item-icon { display:inline-block; flex:0 0 20px; width:20px; height:20px; background:linear-gradient(135deg,#64e358,#1687dc); border-radius:2px; }"
+      },
+      {
+        "name": "Participant Launcher",
+        "kind": "nav",
+        "refersTo": "launcher-option",
+        "description": "Minimal participant entry surface exposing only the Accordion and Drilling journeys.",
+        "html": "<section class=\"ds-launcher\" aria-labelledby=\"ds-launcher-title\"><h1 id=\"ds-launcher-title\">Open menu</h1><nav aria-label=\"Choose a navigation journey\"><a href=\"accordion.html\"><span>Accordion</span><svg aria-hidden=\"true\" viewBox=\"0 0 20 20\"><path d=\"m7 4 6 6-6 6\"/></svg></a><a href=\"screen.html\"><span>Drilling</span><svg aria-hidden=\"true\" viewBox=\"0 0 20 20\"><path d=\"m7 4 6 6-6 6\"/></svg></a></nav></section>",
+        "css": ".ds-launcher { width:100%; padding:28px 20px 44px; color:var(--text,#f4f8fb); background:var(--ink,#061f2d); font-family:\"Trebuchet MS\",\"Segoe UI\",sans-serif; } .ds-launcher h1 { margin:0 0 24px; font-size:1.5rem; line-height:1.1; letter-spacing:-.02em; } .ds-launcher nav { display:grid; gap:2px; border-top:1px solid var(--line,#2c83aa); } .ds-launcher a { display:flex; min-height:60px; align-items:center; justify-content:space-between; gap:20px; padding:8px 10px; color:var(--text,#f4f8fb); font-size:1.05rem; font-weight:800; line-height:1.2; letter-spacing:.02em; text-decoration:none; border-bottom:1px solid var(--line-soft,rgba(108,191,229,.28)); } .ds-launcher a:hover { background:var(--wayfinding-wash,rgba(18,102,149,.24)); } .ds-launcher a:focus-visible { outline:2px solid var(--focus,#ffdb4d); outline-offset:2px; } .ds-launcher svg { width:22px; flex:0 0 22px; fill:none; stroke:var(--cyan,#6cc9f3); stroke-width:2; }"
+      },
+      {
+        "name": "Latitude Longitude Toggle",
+        "kind": "custom",
+        "description": "Compact map-setting switch with a cyan checked state.",
+        "html": "<label class=\"ds-switch-row\"><input type=\"checkbox\"><span class=\"ds-switch-track\" aria-hidden=\"true\"></span><span>Lat/Long</span></label>",
+        "css": ".ds-switch-row { display:flex; align-items:center; gap:12px; color:var(--text-muted,#b8cfda); font:400 .9rem/1.2 \"Trebuchet MS\",\"Segoe UI\",sans-serif; cursor:pointer; } .ds-switch-row input { position:absolute; opacity:0; } .ds-switch-track { position:relative; width:40px; height:22px; background:#d9dde0; border-radius:13px; transition:background 150ms ease-out; } .ds-switch-track::after { content:\"\"; position:absolute; top:-1px; left:-1px; width:24px; height:24px; background:#fff; border-radius:50%; box-shadow:0 2px 5px rgba(0,0,0,.3); transition:transform 150ms ease-out; } .ds-switch-row input:checked + .ds-switch-track { background:var(--cyan,#6cc9f3); } .ds-switch-row input:checked + .ds-switch-track::after { transform:translateX(18px); } .ds-switch-row input:focus-visible + .ds-switch-track { outline:2px solid var(--focus,#ffdb4d); outline-offset:2px; }"
+      },
+      {
+        "name": "Base Map Button",
+        "kind": "button",
+        "refersTo": "base-map-button",
+        "description": "Small square-cornered map control with a persistent pressed outline.",
+        "html": "<button class=\"ds-base-map\" type=\"button\" aria-pressed=\"false\">Base map</button>",
+        "css": ".ds-base-map { padding:6px 7px; color:var(--text,#f4f8fb); font:400 .88rem/1.2 \"Trebuchet MS\",\"Segoe UI\",sans-serif; background:var(--ink-raised,#0b4d73); border:0; border-radius:2px; cursor:pointer; } .ds-base-map:hover { background:var(--ink-active,#126695); } .ds-base-map:focus-visible,.ds-base-map[aria-pressed=\"true\"] { outline:2px solid var(--focus,#ffdb4d); outline-offset:1px; }"
+      }
+    ],
+  "narrative": {
+      "northStar": "The Scannable Flight Deck",
+      "overview": "The interface behaves like a compact operational index: information-rich, dark, and direct, with only the active hierarchy demanding attention. On mobile it supports disclosure-in-place and dedicated drill-in screens; on desktop it extends the same visual language into a persistent two-bar header and wide mega-navigation. Deep navy working surfaces keep the navigation visually continuous while brighter colors act as instruments—cyan points to controls and structure, lime marks categories, and yellow confirms focus, selection, and account identity.\n\nDensity is deliberate rather than cramped. Mobile participants begin on a minimal launcher that exposes only Accordion and Drilling, then enter the selected full-height journey. At 1024px and wider, the separate desktop surface begins with Map selected, keeps common map layers one step away in a secondary bar, and places the complete 26-layer inventory in a six-column mega panel. Decoration is subordinate to navigation state, legibility, and journey consistency.",
+      "keyCharacteristics": [
+        "Deep navy operational surfaces within near-black chrome.",
+        "A minimal two-choice participant launcher with no research controls.",
+        "Compact, wrapping destination chips and unmistakable accordion or drill-in state.",
+        "Cyan wayfinding, lime hierarchy labels, and scarce yellow emphasis.",
+        "Square-small content geometry balanced by pill and circular utility controls.",
+        "Restrained motion with a complete reduced-motion path.",
+        "Equivalent visible Back and browser Back behavior with restored keyboard focus.",
+        "A desktop-only primary bar, Map secondary bar, and six-column layer panel at 1024px and wider.",
+        "Intentional hover preview, click-to-pin persistence, and complete keyboard entry and return paths on desktop."
+      ],
+      "rules": [
+        { "name": "The Three-Signal Rule", "body": "Cyan means wayfinding and control, lime means hierarchy, and yellow means attention or selection; do not interchange their jobs casually.", "section": "colors" },
+        { "name": "The Dark Continuity Rule", "body": "Mobile menu bodies and the desktop Map layer panel remain uninterrupted navy working fields; structure comes from spacing, type, and selective rules rather than stacked decorative cards.", "section": "colors" },
+        { "name": "The Weight-Before-Size Rule", "body": "Inside the menu, create hierarchy through weight, color, and case before enlarging text; compact scanning is part of the product identity.", "section": "typography" },
+        { "name": "The One-Level Rule", "body": "Accordions expose only one top-level section at a time; drill-in navigation replaces the root list with one child screen. In both patterns, the visible inventory stays within one vertically scrolling region.", "section": "layout" },
+        { "name": "The Same Exit Rule", "body": "Visible Back and browser Back return to the same root state and restore focus to the category row that opened the child screen.", "section": "layout" },
+        { "name": "The Participant Exit Rule", "body": "Close and Escape leave either journey and return to the minimal launcher; they do not reveal an in-page test harness.", "section": "layout" },
+        { "name": "The Launcher Boundary Rule", "body": "The participant launcher exposes only Accordion and Drilling; the custom JavaScript accordion remains available solely through its direct internal query route.", "section": "layout" },
+        { "name": "The Desktop Threshold Rule", "body": "The primary bar, Map secondary bar, and mega panels exist only at 1024px and wider; they are a separate evaluation surface, not a responsive state of the 390px mobile prototype.", "section": "layout" },
+        { "name": "The Desktop Reference Rule", "body": "Desktop content follows its own supplied reference, including its wording, quick layers, and compact-panel composition; shared mobile content is not the authority for this surface.", "section": "layout" },
+        { "name": "The Compact Panel Rule", "body": "Briefing and Regional are full-width navy content panels with a cyan top border; never add an external grey caption or charcoal surround.", "section": "layout" },
+        { "name": "The Flat Working Surface Rule", "body": "Never use card shadows inside the menu; hierarchy there is tonal, typographic, and structural.", "section": "elevation" },
+        { "name": "The Shape-Semantics Rule", "body": "Small square corners belong to dense destinations; pills and circles belong to singular controls.", "section": "shapes" },
+        { "name": "The Persistent Selected Page Rule", "body": "Map remains cyan as the selected page while Briefing or Regional is previewed, open, or pinned; dropdown state supplements page state rather than replacing it.", "section": "components" },
+        { "name": "The Stationary Desktop Chrome Rule", "body": "Keep primary chevrons pointing down and the Map sub-navigation in place behind dropdown overlays; communicate opening through the panel's clip-and-fade reveal, not rotating indicators or layout movement.", "section": "components" },
+        { "name": "The One Shared Highlight Rule", "body": "Use one transform-driven dark layer for Balloon, Briefing, and Regional hover/focus continuity; first entry appears in place, later moves glide in about 260ms, and Map remains independently cyan.", "section": "components" },
+        { "name": "The Preview-Then-Pin Rule", "body": "Hover and focus may preview desktop menus, but only activation pins a panel. Preserve the 110ms open and 260ms close intent windows so incidental pointer travel does not churn the navigation.", "section": "components" },
+        { "name": "The Escape Return Rule", "body": "Escape always restores the default Map context and returns focus to the trigger responsible for the dismissed desktop panel.", "section": "components" }
+      ],
+      "dos": [
+        "Do keep top-level accordion targets at least 44px tall and preserve one-open-at-a-time behavior.",
+        "Do use 52px drill-in root rows and keep the 56px Back/title header pinned above child-screen content.",
+        "Do let destination chips wrap naturally inside the vertical scrolling region.",
+        "Do use cyan, lime, and yellow according to the Three-Signal Rule.",
+        "Do preserve visible keyboard focus, accurate expanded state, reduced-motion behavior, and semantic control structure.",
+        "Do make visible Back and browser Back restore the originating drill-in row's focus.",
+        "Do expose only Accordion and Drilling on the participant launcher.",
+        "Do center only the 390px by 844px frame on desktop and use the full viewport on mobile.",
+        "Do make Close and Escape return to the launcher from either journey.",
+        "Do keep the desktop mega-navigation at 1024px and wider, with Map selected and its secondary bar visible by default.",
+        "Do preserve all 26 supplied map layers in the six-column desktop panel and keep Briefing and Regional compact.",
+        "Do preserve desktop hover intent, click-to-pin behavior, Arrow/Enter/Space entry, and Escape focus return.",
+        "Do keep desktop chevrons static and reveal dropdown overlays in about 210ms, dismissing them in about 150ms.",
+        "Do use one continuous dark highlight across Balloon, Briefing, and Regional hover and focus states.",
+        "Do treat the desktop reference as the content authority for desktop labels, ordering, and panel composition."
+      ],
+      "donts": [
+        "Don't add light cards, decorative gradients, or internal shadows that compete with the navigation inventory.",
+        "Don't use horizontal scrolling for destinations or map layers.",
+        "Don't turn every group into a bordered container; spacing and selective rules carry the structure.",
+        "Don't enlarge menu typography to manufacture hierarchy when weight, case, and color can do the job.",
+        "Don't animate state in a way that survives the user's reduced-motion preference.",
+        "Don't put explanatory copy or auxiliary controls around the participant frame.",
+        "Don't link the custom JavaScript accordion from the participant launcher.",
+        "Don't collapse the desktop navigation into the mobile frame or treat the two prototypes as one responsive document.",
+        "Don't open desktop menus on zero-delay pointer transit or dismiss a clicked-and-pinned panel on pointer leave.",
+        "Don't rotate Briefing or Regional chevrons or remove the Map sub-navigation to make room for their overlays.",
+        "Don't animate the first highlight entry from an unrelated origin or merge Map into the shared highlight.",
+        "Don't replace the desktop six-column layer panel with mobile wrapping chips or normalize desktop-specific copy to the mobile inventory."
+      ]
+  }
+}
