@@ -1,0 +1,67 @@
+:root {
+  --combined-drawer-collapsed: 320px;
+}
+
+html,
+body.combined-prototype {
+  width: 100%;
+  height: 100%;
+  min-width: 1024px;
+  overflow: hidden;
+}
+
+body.combined-prototype {
+  display: grid;
+  grid-template-rows: 106px minmax(0, 1fr);
+  background: #101619;
+}
+
+.combined-prototype .site-header {
+  min-height: 0;
+}
+
+.combined-workspace {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.combined-workspace .forecast {
+  --lime: #c5e900;
+  --ink: #20211e;
+  --muted: #bfc1b8;
+  position: absolute;
+  inset: 0 var(--combined-drawer-collapsed) 0 0;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: right 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.combined-workspace:has(.information-drawer.is-expanded) .forecast {
+  right: 50vw;
+}
+
+.combined-workspace .information-drawer {
+  top: 0;
+}
+
+.combined-workspace .timeline {
+  right: 24px;
+}
+
+.combined-workspace .forecast > .days {
+  right: 24px;
+}
+
+.combined-workspace .map .leaflet-top.leaflet-right {
+  top: 14px;
+  right: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .combined-workspace .forecast { transition-duration: 0.01ms; }
+}

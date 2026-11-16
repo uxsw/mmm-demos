@@ -76,6 +76,72 @@ const initial = await evaluate(`({
 assert.deepEqual(initial, { width: 1440, viewport: 1440, mapVisible: true, layers: 26, openPanels: 0 });
 await screenshot("desktop-nav-map.png");
 
+const drawerInitial = await evaluate(`(() => {
+  const drawer = document.querySelector('#information-drawer');
+  const toggle = document.querySelector('[data-drawer-toggle]');
+  return {
+    width: drawer.getBoundingClientRect().width,
+    expanded: toggle.getAttribute('aria-expanded'),
+    label: toggle.getAttribute('aria-label')
+  };
+})()`);
+assert.deepEqual(drawerInitial, { width: 320, expanded: "false", label: "Expand side panel" });
+assert.equal(await evaluate(`getComputedStyle(document.querySelector('[data-drawer-toggle]')).color`), "rgb(201, 209, 211)");
+assert.equal(await evaluate(`document.querySelector('.drawer-remove').textContent`), "Remove layer");
+
+const removeLayerPoint = await evaluate(`(() => {
+  const rect = document.querySelector('.drawer-remove').getBoundingClientRect();
+  return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+})()`);
+await call("Input.dispatchMouseEvent", { type: "mouseMoved", ...removeLayerPoint });
+await settle();
+assert.equal(await evaluate(`getComputedStyle(document.querySelector('.drawer-remove')).color`), "rgb(244, 248, 251)");
+
+const collapsedTogglePoint = await evaluate(`(() => {
+  const rect = document.querySelector('[data-drawer-toggle]').getBoundingClientRect();
+  return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+})()`);
+await call("Input.dispatchMouseEvent", { type: "mouseMoved", ...collapsedTogglePoint });
+await settle();
+assert.equal(await evaluate(`getComputedStyle(document.querySelector('[data-drawer-toggle]')).color`), "rgb(201, 235, 19)");
+assert.equal(await evaluate(`getComputedStyle(document.querySelector('.drawer-tooltip')).opacity`), "0");
+await evaluate(`new Promise((resolve) => setTimeout(resolve, 300))`);
+assert.equal(await evaluate(`getComputedStyle(document.querySelector('.drawer-tooltip')).opacity`), "1");
+await screenshot("desktop-drawer-expand-tooltip.png");
+
+const drawerExpanded = await evaluate(`(async () => {
+  const drawer = document.querySelector('#information-drawer');
+  const toggle = document.querySelector('[data-drawer-toggle]');
+  toggle.click();
+  await new Promise((resolve) => setTimeout(resolve, 360));
+  return {
+    width: drawer.getBoundingClientRect().width,
+    expanded: toggle.getAttribute('aria-expanded'),
+    label: toggle.getAttribute('aria-label'),
+    tooltip: toggle.querySelector('.drawer-tooltip').textContent,
+    chevronTurned: getComputedStyle(toggle.querySelector('svg')).transform !== 'none'
+  };
+})()`);
+assert.deepEqual(drawerExpanded, {
+  width: 720,
+  expanded: "true",
+  label: "Reduce side panel",
+  tooltip: "Reduce side panel",
+  chevronTurned: true
+});
+const expandedTogglePoint = await evaluate(`(() => {
+  const rect = document.querySelector('[data-drawer-toggle]').getBoundingClientRect();
+  return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+})()`);
+await call("Input.dispatchMouseEvent", { type: "mouseMoved", ...expandedTogglePoint });
+await settle();
+assert.equal(await evaluate(`getComputedStyle(document.querySelector('.drawer-tooltip')).opacity`), "0");
+await evaluate(`new Promise((resolve) => setTimeout(resolve, 300))`);
+assert.equal(await evaluate(`getComputedStyle(document.querySelector('.drawer-tooltip')).opacity`), "1");
+await screenshot("desktop-drawer-reduce-tooltip.png");
+await evaluate(`document.querySelector('[data-drawer-toggle]').click()`);
+await settle();
+
 const hover = await evaluate(`(async () => {
   const trigger = document.querySelector('[data-menu-trigger="briefing"]');
   trigger.dispatchEvent(new PointerEvent('pointerenter'));
@@ -94,6 +160,7 @@ assert.deepEqual(hover, { opened: true, returnedToMap: true });
 await evaluate(`document.querySelector('[data-menu-trigger="layers"]').click()`);
 await settle();
 assert.equal(await evaluate(`document.querySelector('[data-menu-trigger="layers"]').getAttribute('aria-expanded')`), "true");
+assert.equal(await evaluate(`document.querySelector('#layers-panel').getBoundingClientRect().width`), 1440);
 await screenshot("desktop-nav-layers.png");
 
 await evaluate(`document.querySelector('[data-menu-trigger="briefing"]').click()`);
@@ -101,12 +168,29 @@ await settle();
 const briefing = await evaluate(`({
   visible: document.querySelector('#briefing-panel').classList.contains('is-visible'),
   links: document.querySelectorAll('#briefing-panel a').length,
+  columns: document.querySelectorAll('#briefing-panel .link-columns > div').length,
+  width: document.querySelector('#briefing-panel').getBoundingClientRect().width,
+  labelsUnwrapped: Array.from(document.querySelectorAll('#briefing-panel a')).every((link) =>
+    getComputedStyle(link).whiteSpace === 'nowrap' && link.scrollWidth <= link.clientWidth
+  ),
+  keyline: getComputedStyle(document.querySelector('#briefing-panel')).borderTopWidth,
+  hasShadow: getComputedStyle(document.querySelector('#briefing-panel')).boxShadow !== 'none',
+  alignedToTrigger: Math.abs(
+    document.querySelector('#briefing-panel').getBoundingClientRect().right -
+    document.querySelector('[data-menu-trigger="briefing"]').getBoundingClientRect().right
+  ) < 1,
   expanded: document.querySelector('[data-menu-trigger="briefing"]').getAttribute('aria-expanded'),
   chevronTransform: getComputedStyle(document.querySelector('[data-menu-trigger="briefing"] svg')).transform,
   transitionDuration: getComputedStyle(document.querySelector('#briefing-panel')).transitionDuration
 })`);
 assert.equal(briefing.visible, true);
 assert.equal(briefing.links, 5);
+assert.equal(briefing.columns, 2);
+assert.equal(briefing.width < 1440, true);
+assert.equal(briefing.labelsUnwrapped, true);
+assert.equal(briefing.keyline, "1px");
+assert.equal(briefing.hasShadow, true);
+assert.equal(briefing.alignedToTrigger, true);
 assert.equal(briefing.expanded, "true");
 assert.equal(briefing.chevronTransform, "none");
 assert.notEqual(briefing.transitionDuration, "0s");
@@ -115,6 +199,15 @@ await screenshot("desktop-nav-briefing.png");
 await evaluate(`document.querySelector('[data-menu-trigger="regional"]').click()`);
 await settle();
 assert.equal(await evaluate(`document.querySelectorAll('#regional-panel a').length`), 4);
+assert.equal(await evaluate(`document.querySelectorAll('#regional-panel .link-columns > div').length`), 2);
+assert.equal(await evaluate(`document.querySelector('#regional-panel').getBoundingClientRect().width < innerWidth`), true);
+assert.equal(await evaluate(`Array.from(document.querySelectorAll('#regional-panel a')).every((link) =>
+  getComputedStyle(link).whiteSpace === 'nowrap' && link.scrollWidth <= link.clientWidth
+)`), true);
+assert.equal(await evaluate(`Math.abs(
+  document.querySelector('#regional-panel').getBoundingClientRect().right -
+  document.querySelector('[data-menu-trigger="regional"]').getBoundingClientRect().right
+) < 1`), true);
 await screenshot("desktop-nav-regional.png");
 
 const keyboard = await evaluate(`(() => {
@@ -176,11 +269,23 @@ assert.deepEqual(repeatedHover, { regionalOnly: true, sharedHighlightMoved: true
 await call("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] });
 const reducedMotionDuration = await evaluate(`getComputedStyle(document.querySelector('#briefing-panel')).transitionDuration`);
 assert.match(reducedMotionDuration, /(?:0\.00001|1e-05)s/);
+const drawerReducedMotionDuration = await evaluate(`getComputedStyle(document.querySelector('#information-drawer')).transitionDuration`);
+assert.match(drawerReducedMotionDuration, /(?:0\.00001|1e-05)s/);
 await call("Emulation.setEmulatedMedia", { features: [] });
 
 await call("Emulation.setDeviceMetricsOverride", { width: 1024, height: 768, deviceScaleFactor: 1, mobile: false });
 await settle();
 assert.equal(await evaluate(`document.documentElement.scrollWidth`), 1024);
+await evaluate(`document.querySelector('[data-menu-trigger="briefing"]').click()`);
+await settle();
+assert.equal(await evaluate(`document.querySelector('#briefing-panel').getBoundingClientRect().width < innerWidth`), true);
+assert.equal(await evaluate(`Math.abs(
+  document.querySelector('#briefing-panel').getBoundingClientRect().right -
+  document.querySelector('[data-menu-trigger="briefing"]').getBoundingClientRect().right
+) < 1`), true);
+await evaluate(`document.querySelector('[data-drawer-toggle]').click()`);
+await settle();
+assert.equal(await evaluate(`document.querySelector('#information-drawer').getBoundingClientRect().width`), 512);
 
 const accessibility = await call("Accessibility.getFullAXTree");
 const roles = accessibility.nodes.reduce((counts, node) => {
@@ -189,5 +294,5 @@ const roles = accessibility.nodes.reduce((counts, node) => {
   return counts;
 }, {});
 
-console.log(JSON.stringify({ initial, hover, briefing, keyboard, keyboardEntry, repeatedHover, reducedMotionDuration, roles: { navigation: roles.navigation || 0, button: roles.button || 0, link: roles.link || 0 } }, null, 2));
+console.log(JSON.stringify({ initial, drawerInitial, drawerExpanded, hover, briefing, keyboard, keyboardEntry, repeatedHover, reducedMotionDuration, drawerReducedMotionDuration, roles: { navigation: roles.navigation || 0, button: roles.button || 0, link: roles.link || 0 } }, null, 2));
 browser.kill();

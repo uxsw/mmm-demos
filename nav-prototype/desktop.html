@@ -55,10 +55,9 @@
       </div>
 
       <div class="mega-panel compact-panel" id="briefing-panel" data-menu-panel="briefing" hidden>
-        <div class="link-columns link-columns--three">
-          <div><a href="#surface-pressure">Surface Pressure</a><a href="#f215">F215 UK Low-Level Significant Weather</a></div>
-          <div><a href="#f415">F415 European Low-Level Significant Weather</a><a href="#f214">F214 UK Spot Winds</a></div>
-          <div><a href="#f414">F414 European Spot Winds</a></div>
+        <div class="link-columns link-columns--two">
+          <div><a href="#surface-pressure">Surface Pressure</a><a href="#f215">F215 UK Low-Level Significant Weather</a><a href="#f415">F415 European Low-Level Significant Weather</a></div>
+          <div><a href="#f214">F214 UK Spot Winds</a><a href="#f414">F414 European Spot Winds</a></div>
         </div>
       </div>
 
@@ -85,6 +84,65 @@
         <path class="isobar" d="M-40 144C274 38 474 272 760 146s512-81 752 21M-30 335c252-134 486 103 760-3 264-102 442 41 758-27M-20 536c243-107 496 67 736-17 300-105 532 63 786-45"/>
       </svg>
       <p class="workspace-label">Desktop navigation interaction prototype</p>
+
+      <aside class="information-drawer" id="information-drawer" aria-labelledby="drawer-title">
+        <button
+          class="drawer-toggle"
+          type="button"
+          data-drawer-toggle
+          aria-controls="information-drawer"
+          aria-expanded="false"
+          aria-label="Expand side panel"
+        >
+          <span class="drawer-tooltip" role="tooltip">Expand side panel</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="m10 3-5 5 5 5"/>
+          </svg>
+        </button>
+
+        <div class="drawer-heading">
+          <div class="drawer-layer">
+            <svg class="drawer-check" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="m3 8 3 3 7-7"/>
+            </svg>
+            <h1 id="drawer-title">Surface Visibility</h1>
+            <svg class="drawer-pin" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M5 2h6l-1 5 2 2H4l2-2zM8 9v5"/>
+            </svg>
+          </div>
+          <button class="drawer-remove" type="button">Remove layer</button>
+        </div>
+
+        <div class="drawer-body">
+          <div class="drawer-control">
+            <span class="drawer-switch" aria-hidden="true"><span></span></span>
+            <span>Map key</span>
+          </div>
+
+          <section class="drawer-section" aria-labelledby="sites-title">
+            <div class="drawer-section-heading">
+              <h2 id="sites-title">Sites</h2>
+              <span>3 nearby</span>
+            </div>
+            <article class="site-summary site-summary--selected">
+              <span class="status-dot" aria-hidden="true"></span>
+              <div>
+                <p>Updated 23m ago</p>
+                <h3>EGGD Bristol Airport</h3>
+                <p>Visibility 9,999 m · Strong wind warning</p>
+              </div>
+            </article>
+            <article class="site-summary">
+              <span class="status-dot" aria-hidden="true"></span>
+              <div>
+                <p>Updated 31m ago</p>
+                <h3>EGFF Cardiff Airport</h3>
+                <p>Visibility 8,000 m · No active warnings</p>
+              </div>
+            </article>
+          </section>
+        </div>
+      </aside>
     </main>
 
     <script src="nav-data.js"></script>

@@ -34,6 +34,9 @@ For the desktop mega-navigation, visit `http://localhost:8000/desktop.html` at a
 - Click a menu trigger to keep its panel open while moving the pointer elsewhere.
 - Use Left/Right Arrow between dropdown triggers, Down Arrow to enter an open content panel, and Escape to dismiss it.
 - Move the pointer from a trigger into its panel and confirm the panel remains available.
+- Hover the control on the left edge of the information drawer and confirm its tooltip reads **Expand side panel**.
+- Select the control and confirm the drawer expands from 320px to 50% of the viewport, the chevron reverses, and the tooltip changes to **Reduce side panel**.
+- Select the control again and confirm the drawer returns to 320px.
 
 ## Drill-in screen version
 

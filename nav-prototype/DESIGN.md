@@ -266,13 +266,13 @@ The separate desktop prototype is desktop-only and begins at a hard 1024px minim
 
 Map selection reveals a 48px secondary bar beneath the primary bar. “All layers” anchors the left edge and is followed by the supplied quick layers: Surface Visibility, Cloud Base, and Surface Temperature. Opening All layers produces a full-width navy mega panel with a compact Lat/Long switch and exactly 26 layer links arranged across six equal columns. Eight groups flow in the supplied column order: Cloud & visibility; Lightning, Pressure, and Satellite; Precipitation; Sea conditions; Temperature; and Wind. Columns use 14px internal padding, cyan-toned vertical separators, compact 34px links, and 25px visual swatches.
 
-Briefing Products and Regional Report open compact, full-width navy content panels rather than the full layer inventory. Briefing uses three columns; Regional uses two columns capped at 440px each. Each compact panel begins directly with a cyan top border and its link columns; there is no external grey caption or charcoal surround. Desktop labels, ordering, and panel composition follow the desktop surface's own supplied reference and implementation; do not normalize them to the mobile navigation inventory when the two references differ.
+Briefing Products and Regional Report open compact navy dropdowns anchored directly beneath their primary-navigation triggers rather than spanning the viewport. Both use two intrinsic-width columns: Briefing balances five links and Regional balances four links, with every label kept on one line. A subtle 1px cyan-toned keyline and soft downward shadow separate each dropdown from the workspace without adding an external caption or surround. Desktop labels, ordering, and panel composition follow the desktop surface's own supplied reference and implementation; do not normalize them to the mobile navigation inventory when the two references differ.
 
 **The Desktop Threshold Rule.** The primary bar, Map secondary bar, and mega panels exist only at 1024px and wider; they are a separate evaluation surface, not a responsive state of the 390px mobile prototype.
 
 **The Desktop Reference Rule.** Desktop content follows its own supplied reference, including its wording, quick layers, and compact-panel composition; shared mobile content is not the authority for this surface.
 
-**The Compact Panel Rule.** Briefing and Regional are full-width navy content panels with a cyan top border; never add an external grey caption or charcoal surround.
+**The Compact Panel Rule.** Briefing and Regional are two-column navy dropdowns right-aligned to their owning triggers; keep their labels unwrapped, their footprint content-sized, and their surface separated by one restrained keyline and shadow.
 
 **The One-Level Rule.** Accordions expose only one top-level section at a time; drill-in navigation replaces the root list with one child screen. In both patterns, the visible inventory stays within one vertically scrolling region.
 
@@ -349,7 +349,7 @@ The child screen enters with a restrained 180ms right-to-left settle using the s
 
 #### Desktop Mega-navigation
 
-The desktop primary bar keeps Balloon Forecasts as a direct link and presents Briefing Products, Regional Report, and Map as adjacent navigation controls. Map is the default selected page; its cyan active tab reveals the secondary bar. Previewing or opening Briefing or Regional shows that trigger's dropdown state without removing Map's cyan selected-page state. Their compact full-width navy panels occupy the dropdown region, while All layers opens the complete six-column panel below the Map bar.
+The desktop primary bar keeps Balloon Forecasts as a direct link and presents Briefing Products, Regional Report, and Map as adjacent navigation controls. Map is the default selected page; its cyan active tab reveals the secondary bar. Previewing or opening Briefing or Regional shows that trigger's dropdown state without removing Map's cyan selected-page state. Their compact two-column navy dropdowns stay directly connected to their owning triggers, while All layers opens the complete full-width six-column panel below the Map bar.
 
 **The Persistent Selected Page Rule.** Map remains cyan as the selected page while Briefing or Regional is previewed, open, or pinned; dropdown state supplements page state rather than replacing it.
 

@@ -7,6 +7,9 @@ From this folder, run:
 Then open http://127.0.0.1:8000 in your browser.
 The map needs internet access. Serve over HTTP/HTTPS (including localhost), rather than opening a file:// URL, so map requests carry the Referer required by OpenStreetMap.
 
+Combined desktop prototype: http://127.0.0.1:8000/combined-prototype.html
+This page combines the desktop navigation, expandable information drawer, Leaflet map and forecast timeline. The drawer resizes the map and timeline from 320px to 50% of the viewport.
+
 Editable source: index.html, styles.css, timeline.js and map.js. No package installation or build is required.
 
 Shareable export: timeline-prototype.html inlines our CSS and JavaScript but still loads Leaflet and map tiles online. Serve it over HTTP/HTTPS too. Regenerate it with python3 build-prototype.py.

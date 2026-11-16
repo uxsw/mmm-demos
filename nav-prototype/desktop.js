@@ -11,6 +11,9 @@
   const mapTrigger = document.querySelector('[data-menu-trigger="map"]');
   const layerColumns = document.querySelector("[data-layer-columns]");
   const switchControl = document.querySelector('[role="switch"]');
+  const informationDrawer = document.getElementById("information-drawer");
+  const drawerToggle = document.querySelector("[data-drawer-toggle]");
+  const drawerTooltip = drawerToggle?.querySelector(".drawer-tooltip");
   let openMenu = "map";
   let pinnedMenu = null;
   let openTimer;
@@ -63,6 +66,25 @@
       });
 
       layerColumns.append(column);
+    });
+  }
+
+  function setDrawerExpanded(isExpanded) {
+    const action = isExpanded ? "Reduce side panel" : "Expand side panel";
+    informationDrawer?.classList.toggle("is-expanded", isExpanded);
+    drawerToggle?.setAttribute("aria-expanded", String(isExpanded));
+    drawerToggle?.setAttribute("aria-label", action);
+    if (drawerTooltip) drawerTooltip.textContent = action;
+  }
+
+  function positionCompactPanels() {
+    const headerRect = navigation.getBoundingClientRect();
+    ["briefing", "regional"].forEach((menu) => {
+      const trigger = document.querySelector(`[data-menu-trigger="${menu}"]`);
+      const panel = document.querySelector(`[data-menu-panel="${menu}"]`);
+      if (!trigger || !panel) return;
+      const triggerRect = trigger.getBoundingClientRect();
+      panel.style.setProperty("--compact-panel-right", `${Math.max(12, headerRect.right - triggerRect.right)}px`);
     });
   }
 
@@ -189,6 +211,7 @@
   mapTrigger.addEventListener("pointerenter", () => moveHighlight(null));
   window.addEventListener("resize", () => {
     if (highlightTarget) moveHighlight(highlightTarget);
+    positionCompactPanels();
   });
 
   navigation.addEventListener("pointerleave", scheduleClose);
@@ -209,9 +232,15 @@
     switchControl.setAttribute("aria-checked", String(switchControl.getAttribute("aria-checked") !== "true"));
   });
 
+  drawerToggle?.addEventListener("click", () => {
+    setDrawerExpanded(drawerToggle.getAttribute("aria-expanded") !== "true");
+  });
+
   panels.forEach((panel) => {
     panel.hidden = false;
   });
   buildLayers();
+  positionCompactPanels();
   setOpen("map");
+  setDrawerExpanded(false);
 })();
