@@ -147,7 +147,7 @@ const closeAudit = await evaluate(`(() => {
 })()`);
 assert.equal(closeAudit, true);
 await settle();
-assert.deepEqual(await evaluate(`({ page: location.pathname.split('/').pop(), choices: [...document.querySelectorAll('.launcher-options a')].map(link => link.textContent.trim()) })`), { page: "index.html", choices: ["Accordion", "Drilling"] });
+assert.deepEqual(await evaluate(`({ page: location.pathname.split('/').pop(), choices: [...document.querySelectorAll('.launcher-options a')].map(link => link.textContent.trim()) })`), { page: "index.html", choices: ["Accordion", "Drilling", "With avatar", "Without avatar"] });
 await screenshot("launcher-mobile.png");
 await call("Page.navigate", { url: pageUrl });
 await settle();
@@ -191,7 +191,7 @@ assert.ok((roles.searchbox || 0) >= 1);
 await call("Page.navigate", { url: `file://${resolve(project, "index.html")}` });
 await settle();
 await screenshot("launcher-desktop.png");
-assert.deepEqual(await evaluate(`({ frameWidth: Math.round(document.querySelector('.phone-stage').getBoundingClientRect().width), choices: document.querySelectorAll('.launcher-options a').length })`), { frameWidth: 390, choices: 2 });
+assert.deepEqual(await evaluate(`({ frameWidth: Math.round(document.querySelector('.phone-stage').getBoundingClientRect().width), choices: document.querySelectorAll('.launcher-options a').length })`), { frameWidth: 390, choices: 4 });
 
 console.log(JSON.stringify({ rootAudit, mapAudit, stickyAudit, searchAudit, roles: { navigation: roles.navigation || 0, button: roles.button || 0, searchbox: roles.searchbox || 0 } }, null, 2));
 browser.kill();

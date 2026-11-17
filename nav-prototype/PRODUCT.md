@@ -12,7 +12,7 @@ Delegated: framework-free HTML, CSS, and JavaScript so the prototype has no inst
 
 ## Users
 
-Aviation weather product users navigating a content-heavy service from mobile and desktop devices. The immediate audience is the research and development teams comparing mobile navigation models and evaluating a desktop mega-navigation interaction.
+Aviation weather product users navigating a content-heavy service from mobile and desktop devices. The immediate audience is the research and development teams comparing mobile navigation models, testing account-avatar placement, and evaluating a desktop mega-navigation interaction.
 
 ## Product Purpose
 
@@ -20,7 +20,7 @@ Recreate the supplied navigation states closely enough to test discoverability, 
 
 ## Operating Context
 
-The mobile prototype is evaluated at a narrow viewport. Testers begin on a minimal launcher, choose Accordion or Drilling, open the full-height navigation journey, scan or search for a destination, and select it. The separate desktop prototype is evaluated at 1024px or wider, beginning with Map selected and exposing secondary and mega-navigation layers.
+The mobile prototype is evaluated at a narrow viewport. Testers begin on a minimal launcher and choose Accordion, Drilling, With avatar, or Without avatar. The first two paths compare full-height navigation journeys; the avatar-placement paths compare an interactive account control in the app bar with noninteractive account identity inside the navigation drawer. The separate desktop prototype is evaluated at 1024px or wider, beginning with Map selected and exposing secondary and mega-navigation layers.
 
 ## Capabilities and Constraints
 
@@ -28,7 +28,12 @@ The mobile prototype is evaluated at a narrow viewport. Testers begin on a minim
 - The first version uses a single-open accordion; the second opens each category as a separate scrollable screen with a persistent back control.
 - The Map section includes every layer shown in the supplied desktop reference.
 - Native `<details>`, custom JavaScript accordion, and drill-in screen implementations must all be testable.
-- The public launcher exposes only native Accordion and Drilling; custom JavaScript remains available through a direct internal URL.
+- The public launcher exposes Accordion, Drilling, With avatar, and Without avatar; the custom JavaScript accordion remains available only through a direct internal URL.
+- Both avatar-placement routes use a black Met Office/MAVIS app bar and a hamburger-triggered, full-height modal drawer containing the native accordion.
+- With avatar keeps the yellow avatar interactive in the app bar and opens a closable popover reading “Avatar menu launched.”
+- Without avatar leaves only the hamburger in the app bar and presents the yellow avatar as noninteractive Account identity inside the drawer.
+- While the modal drawer is open, keyboard focus remains inside it and the app bar and map workspace are inert; closing restores focus to the hamburger.
+- The plain neutral map field is an intentional prototype workspace, not a representation of the production weather map.
 - Desktop presentation contains only a centered 390 × 844 mobile frame with no surrounding research UI.
 - The separate desktop page uses a fixed desktop navigation layout and is not intended to collapse into the mobile experience.
 - Desktop mega-navigation opens on intentional hover, remains operable by click, and supports keyboard focus and Escape dismissal.
@@ -49,6 +54,7 @@ Preserve the supplied dark navy, cyan, lime, and yellow visual language; compact
 - Keep all destinations reachable without horizontal scrolling.
 - Preserve familiar browser and assistive-technology behaviour where practical.
 - Make the implementation comparison observable under the same content and styling.
+- Keep account placement—not unrelated visual or content changes—as the meaningful difference between the two avatar routes.
 
 ## Accessibility & Inclusion
 

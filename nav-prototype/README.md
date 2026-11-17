@@ -1,10 +1,10 @@
 # MAVIS navigation prototypes
 
-A framework-free set of mobile and desktop navigation prototypes based on the supplied references. The mobile version compares accordion and drill-in models; the desktop version tests a large hover-and-click mega-navigation.
+A framework-free set of mobile and desktop navigation prototypes based on the supplied references. The mobile version compares accordion and drill-in models plus two account-avatar placements; the desktop version tests a large hover-and-click mega-navigation.
 
 ## Run it
 
-Open `index.html` to launch the phone-sized chooser. It offers the two public journeys: **Accordion** and **Drilling**. The files can be opened directly, or served locally:
+Open `index.html` to launch the phone-sized chooser. It offers four public routes: **Accordion**, **Drilling**, **With avatar**, and **Without avatar**. The files can be opened directly, or served locally:
 
 ```sh
 python3 -m http.server 8000
@@ -16,7 +16,7 @@ For the desktop mega-navigation, visit `http://localhost:8000/desktop.html` at a
 
 ## What to test
 
-- Choose **Accordion** or **Drilling** from the initial Open menu screen.
+- Choose each of **Accordion**, **Drilling**, **With avatar**, and **Without avatar** from the initial Open menu screen.
 - Expand each top-level section; only one section remains open.
 - Search across destination and map-layer labels.
 - Select a destination and confirm the current-item state.
@@ -24,7 +24,12 @@ For the desktop mega-navigation, visit `http://localhost:8000/desktop.html` at a
 - Use Tab, Shift+Tab, Enter, Space, and arrow-key browser scrolling.
 - In `screen.html`, open every category as a new view and confirm the back/title row remains visible while the list scrolls.
 - Use both the visible Back control and browser Back, then confirm focus returns to the category that opened the screen.
-- Close either journey and confirm it returns to the two-option launcher.
+- Close Accordion or Drilling and confirm it returns to the four-option launcher.
+- In **With avatar**, confirm the black Met Office/MAVIS app bar contains both the hamburger and yellow avatar.
+- Open the avatar and confirm a closable popover reads **Avatar menu launched**; verify Escape closes it and returns focus to the avatar.
+- Open the hamburger and confirm the full-height drawer uses the native single-open accordion, contains focus, makes the app bar and map workspace inert, and restores focus to the hamburger when closed.
+- In **Without avatar**, confirm the app bar contains only the hamburger and the drawer presents the yellow avatar with **Account** as noninteractive identity.
+- Confirm both avatar routes use the same deliberately plain neutral map placeholder so account placement remains the variable under test.
 
 ### Desktop page
 
@@ -46,7 +51,7 @@ This pattern reduces competition between top-level categories and child links, b
 
 ## Implementation comparison
 
-The shared launcher intentionally exposes only the two core research options. The custom JavaScript accordion remains available internally at `accordion.html?method=custom`, but is not linked from the participant-facing interface.
+The shared launcher intentionally exposes the two core navigation journeys and the two avatar-placement tests. The custom JavaScript accordion remains available internally at `accordion.html?method=custom`, but is not linked from the participant-facing interface.
 
 ### Native `<details>`
 

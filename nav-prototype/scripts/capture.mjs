@@ -151,7 +151,7 @@ const closeAudit = await evaluate(`(() => {
 })()`);
 assert.equal(closeAudit, true);
 await settle();
-assert.deepEqual(await evaluate(`({ page: location.pathname.split('/').pop(), choices: document.querySelectorAll('.launcher-options a').length })`), { page: "index.html", choices: 2 });
+assert.deepEqual(await evaluate(`({ page: location.pathname.split('/').pop(), choices: document.querySelectorAll('.launcher-options a').length })`), { page: "index.html", choices: 4 });
 await call("Page.navigate", { url: pageUrl });
 await settle();
 

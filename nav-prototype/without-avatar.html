@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1b1b1b" />
+    <title>MAVIS navigation — without avatar</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="nav-test.css" />
+  </head>
+  <body data-avatar-placement="navigation">
+    <main class="prototype prototype--standalone">
+      <section class="phone-stage nav-test-stage" aria-label="Navigation test without avatar in the header">
+        <header class="app-bar">
+          <div class="brand-lockup" aria-label="Met Office MAVIS">
+            <svg class="brand-mark" aria-hidden="true" viewBox="0 0 34 22">
+              <path d="M1 6c6 0 7-4 13-4s7 3 13 3c3 0 4-1 6-2M1 11c6 0 7-4 13-4s7 3 13 3c3 0 4-1 6-2M1 16c6 0 7-4 13-4s7 3 13 3c3 0 4-1 6-2" />
+            </svg>
+            <strong>Met Office</strong>
+            <span>MAVIS</span>
+          </div>
+          <div class="app-bar__actions">
+            <button class="app-bar__button" id="open-navigation" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation-drawer">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14" /></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="map-placeholder" role="img" aria-label="Placeholder for the weather map">
+          <span>Map placeholder</span>
+        </div>
+
+        <div class="navigation-drawer" id="navigation-drawer" role="dialog" aria-modal="true" aria-labelledby="navigation-title" aria-hidden="true">
+          <header class="menu-header">
+            <strong id="navigation-title">Menu</strong>
+            <button class="icon-button" id="close-navigation" type="button" aria-label="Close navigation">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg>
+            </button>
+          </header>
+          <div class="menu-body">
+            <div class="menu-account">
+              <span class="header-avatar" aria-hidden="true">M</span>
+              <span>Account</span>
+            </div>
+            <nav id="test-navigation" aria-label="Primary navigation"></nav>
+          </div>
+          <footer class="menu-footer">© Crown copyright</footer>
+        </div>
+      </section>
+    </main>
+    <script src="nav-data.js"></script>
+    <script src="nav-test.js"></script>
+  </body>
+</html>

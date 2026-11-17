@@ -5,6 +5,8 @@ colors:
   canvas: "#252626"
   desktop-canvas: "#101619"
   chrome: "#11191d"
+  app-bar: "#1b1b1b"
+  prototype-workspace: "#d9dbdd"
   desktop-chrome: "#171b1e"
   desktop-hover: "#243238"
   ink: "#061f2d"
@@ -95,6 +97,22 @@ components:
     typography: "{typography.launcher-option}"
     padding: "8px 10px"
     height: "60px"
+  mobile-app-bar:
+    backgroundColor: "{colors.app-bar}"
+    textColor: "{colors.text}"
+    height: "74px"
+    padding: "0 8px"
+  prototype-map:
+    backgroundColor: "{colors.prototype-workspace}"
+    height: "100%"
+  navigation-drawer:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.text}"
+    height: "100%"
+  avatar-popover:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.text}"
+    padding: "16px"
   search-field:
     backgroundColor: "{colors.ink-raised}"
     textColor: "{colors.text}"
@@ -168,14 +186,15 @@ components:
 
 **Creative North Star: "The Scannable Flight Deck"**
 
-The interface behaves like a compact operational index: information-rich, dark, and direct, with only the active hierarchy demanding attention. On mobile it supports disclosure-in-place and dedicated drill-in screens; on desktop it extends the same visual language into a persistent two-bar header and wide mega-navigation. Deep navy working surfaces keep the navigation visually continuous while brighter colors act as instruments—cyan points to controls and structure, lime marks categories, and yellow confirms focus, selection, and account identity.
+The interface behaves like a compact operational index: information-rich, dark, and direct, with only the active hierarchy demanding attention. On mobile it supports disclosure-in-place, dedicated drill-in screens, and focused tests of account placement between app bar and drawer; on desktop it extends the same visual language into a persistent two-bar header and wide mega-navigation. Deep navy working surfaces keep the navigation visually continuous while brighter colors act as instruments—cyan points to controls and structure, lime marks categories, and yellow confirms focus, selection, and account identity.
 
-Density is deliberate rather than cramped. Mobile participants begin on a minimal launcher that exposes only Accordion and Drilling, then enter the selected full-height journey. At 1024px and wider, the separate desktop surface begins with Map selected, keeps common map layers one step away in a secondary bar, and places the complete 26-layer inventory in a six-column mega panel. Decoration is subordinate to navigation state, legibility, and journey consistency.
+Density is deliberate rather than cramped. Mobile participants begin on a minimal launcher that exposes Accordion, Drilling, With avatar, and Without avatar. The avatar routes pair a black Met Office/MAVIS app bar with a deliberately plain neutral workspace so account placement remains the test variable. At 1024px and wider, the separate desktop surface begins with Map selected, keeps common map layers one step away in a secondary bar, and places the complete 26-layer inventory in a six-column mega panel. Decoration is subordinate to navigation state, legibility, and journey consistency.
 
 **Key Characteristics:**
 
 - Deep navy operational surfaces within near-black chrome.
-- A minimal two-choice participant launcher with no research controls.
+- A minimal four-choice participant launcher with no research controls.
+- Two controlled avatar-placement routes sharing one modal native-accordion drawer.
 - Compact, wrapping destination chips and unmistakable accordion or drill-in state.
 - Cyan wayfinding, lime hierarchy labels, and scarce yellow emphasis.
 - Square-small content geometry balanced by pill and circular utility controls.
@@ -207,6 +226,8 @@ The palette reads like aviation instrumentation: dark working fields carry the d
 - **Runway Canvas:** The desktop background surrounding the centered participant frame.
 - **Desktop Night Canvas:** The full-browser field beneath the desktop-only navigation and weather-map workspace.
 - **Black-box Chrome:** The persistent launcher and menu header above the navy working surface.
+- **App Bar Black:** The Met Office/MAVIS top bar on both avatar-placement routes.
+- **Prototype Workspace Gray:** The intentionally plain map-placeholder field used to keep the avatar-placement comparison visually neutral; it is not a production map color.
 - **Desktop Chrome:** The slightly lighter near-black primary bar used only by the desktop mega-navigation.
 - **Desktop Hover Slate:** The restrained rollover field for primary desktop navigation.
 - **Flight Deck Ink:** The continuous menu, scrollbar track, and footer surface.
@@ -224,18 +245,20 @@ The palette reads like aviation instrumentation: dark working fields carry the d
 
 **The Dark Continuity Rule.** Mobile menu bodies and the desktop Map layer panel remain uninterrupted navy working fields; structure comes from spacing, type, and selective rules rather than stacked decorative cards.
 
+**The Prototype Workspace Rule.** Use Prototype Workspace Gray only for the deliberately plain map placeholder in research surfaces; do not promote it into the production navigation palette.
+
 ## Typography
 
 **Display Font:** Trebuchet MS (with Segoe UI and generic sans-serif fallbacks)  
 **Body Font:** Trebuchet MS (with Segoe UI and generic sans-serif fallbacks)  
 **Label Font:** Trebuchet MS (with Segoe UI and generic sans-serif fallbacks)
 
-**Character:** A single humanist sans-serif stack keeps both prototypes immediate and platform-tolerant. The mobile launcher uses one clear 1.5rem instruction and two firm 1.05rem choices. Desktop navigation stays quieter at 0.98rem, with 0.81rem layer links and tracked 0.69rem uppercase layer-group labels. Across both surfaces, hierarchy comes from weight, compact sizing, and restrained tracking rather than a decorative type pairing.
+**Character:** A single humanist sans-serif stack keeps both prototypes immediate and platform-tolerant. The mobile launcher uses one clear 1.5rem instruction and four firm 1.05rem choices. Desktop navigation stays quieter at 0.98rem, with 0.81rem layer links and tracked 0.69rem uppercase layer-group labels. Across both surfaces, hierarchy comes from weight, compact sizing, and restrained tracking rather than a decorative type pairing.
 
 ### Hierarchy
 
 - **Display:** Bold at 1.5rem with tight leading; used only for the launcher instruction “Open menu.”
-- **Launcher Option:** Extra-bold at 1.05rem with slight tracking; used for the Accordion and Drilling journey links.
+- **Launcher Option:** Extra-bold at 1.05rem with slight tracking; used for the Accordion, Drilling, With avatar, and Without avatar route links.
 - **Headline:** Extra-bold with slight tracking; used for top-level accordion triggers and drill-in root rows.
 - **Title:** Bold and compact; used for the menu identity, drill-in screen title, and panel headings.
 - **Body:** Regular, compact, and readable; used for destination chips and operational copy.
@@ -252,13 +275,19 @@ The palette reads like aviation instrumentation: dark working fields carry the d
 
 ### Mobile Participant Surface
 
-The participant surface is always one mobile frame. On desktop, center only the 390px by 844px frame on the runway canvas; do not add surrounding copy, controls, or a second column. On mobile, remove the outer border, radius, shadow, and padding so the frame becomes the full viewport edge to edge. The launcher and both journeys use a fixed 44px header, a flexible middle region, and a persistent 40px Crown copyright footer.
+The participant surface is always one mobile frame. On desktop, center only the 390px by 844px frame on the runway canvas; do not add surrounding copy, controls, or a second column. On mobile, remove the outer border, radius, shadow, and padding so the frame becomes the full viewport edge to edge. The launcher, Accordion, and Drilling routes use a fixed 44px header, a flexible middle region, and a persistent 40px Crown copyright footer.
 
-The launcher centers its content vertically within the middle region, with 20px horizontal padding and 28px top, 44px bottom padding. “Open menu” sits 24px above two stacked 60px journey links. Each row has a cyan forward chevron and a structural divider, exposing only Accordion and Drilling. The custom JavaScript accordion is an unlinked internal route available through `accordion.html?method=custom`.
+The launcher centers its content vertically within the middle region, with 20px horizontal padding and 28px top, 44px bottom padding. “Open menu” sits 24px above four stacked 60px route links: Accordion, Drilling, With avatar, and Without avatar. Each row has a cyan forward chevron and a structural divider. The custom JavaScript accordion is an unlinked internal route available through `accordion.html?method=custom`.
 
 Within the menu, use an 8px working inset, 12–16px structural insets, and 5–8px gaps for dense item groups. Destination links wrap as a flexible row rather than forcing a fixed grid. Primary accordion targets remain at least 44px tall; drill-in root rows are 52px tall, the pinned child-screen header is 56px tall, and the search field is 46px tall.
 
 The drill-in root contains search, account access, and six full-width category rows. Selecting a category replaces that root list inside the existing scroll region. The child screen keeps its Back control and centered category title sticky at the top while the grouped inventory scrolls underneath; the global menu header and Crown copyright footer remain in place.
+
+### Avatar Placement Test Surfaces
+
+Both account-placement routes use a 74px black Met Office/MAVIS app bar above the intentionally plain Prototype Workspace Gray map placeholder. The hamburger opens a full-height drawer that covers the frame and reuses the native single-open accordion. The drawer is modal: initial focus moves to Close, Tab and Shift+Tab cycle within the drawer, the app bar and map workspace are inert, and Close or Escape restores focus to the hamburger. The 220ms drawer translation becomes effectively immediate when reduced motion is requested.
+
+With avatar places both the lime hamburger and the yellow circular avatar in the app bar. The avatar opens a compact navy popover reading “Avatar menu launched”; its visible Close control and Escape dismiss it, and opening the drawer first dismisses the popover. Without avatar leaves only the hamburger in the app bar and places the same yellow avatar beside an Account label at the top of the drawer as noninteractive identity.
 
 ### Desktop Mega-navigation Surface
 
@@ -278,9 +307,11 @@ Briefing Products and Regional Report open compact navy dropdowns anchored direc
 
 **The Same Exit Rule.** Visible Back and browser Back return to the same root state and restore focus to the category row that opened the child screen.
 
-**The Participant Exit Rule.** Close and Escape leave either journey and return to the minimal launcher; they do not reveal an in-page test harness.
+**The Participant Exit Rule.** Close and Escape leave the Accordion or Drilling journey and return to the minimal launcher; they do not reveal an in-page test harness.
 
-**The Launcher Boundary Rule.** The participant launcher exposes only Accordion and Drilling; the custom JavaScript accordion remains available solely through its direct internal query route.
+**The Launcher Boundary Rule.** The participant launcher exposes Accordion, Drilling, With avatar, and Without avatar; the custom JavaScript accordion remains available solely through its direct internal query route.
+
+**The Drawer Containment Rule.** The avatar-test drawer is a full-height modal surface: keep focus inside it and make the app bar and map workspace inert until it closes.
 
 ## Elevation & Depth
 
@@ -294,6 +325,7 @@ The desktop-only site header and any open mega panel use restrained structural s
 - **Switch Thumb** (`0 2px 5px rgba(0, 0, 0, 0.3)`): Keeps the white toggle thumb distinct from both switch states.
 - **Desktop Header** (`0 5px 20px rgba(0, 0, 0, 0.32)`): Separates the persistent desktop navigation stack from the weather-map workspace.
 - **Desktop Mega Panel** (`0 12px 22px rgba(0, 0, 0, 0.36)`): Places an open Briefing, Regional, or All Layers panel above the workspace.
+- **Avatar Popover** (`0 10px 24px rgba(0, 0, 0, 0.34)`): Separates the compact avatar response from the neutral prototype workspace.
 
 ### Named Rules
 
@@ -301,7 +333,7 @@ The desktop-only site header and any open mega panel use restrained structural s
 
 ## Shapes
 
-The system mixes two deliberate shape families. Content-heavy navigation is nearly square: launcher rows, destination chips, layer icons, and map controls use straight edges or a restrained 2px radius. Utility controls are friendlier and more isolated: the search field is a 24px pill and the profile control is circular. The 32px device radius exists only around the centered desktop frame and disappears on mobile.
+The system mixes two deliberate shape families. Content-heavy navigation is nearly square: launcher rows, destination chips, layer icons, map controls, and the avatar popover use straight edges or a restrained 2px radius. Utility controls are friendlier and more isolated: the search field is a 24px pill and the profile control is circular. The 32px device radius exists only around the centered desktop frame and disappears on mobile.
 
 The desktop extension follows the same semantics. Primary and secondary bars, compact panels, columns, and link fields remain square. The MAVIS product tag and 25px layer swatches use the restrained 2px radius; the profile control and Lat/Long thumb are circular.
 
@@ -339,13 +371,19 @@ Borders are sparse. Use strong cyan rules for meaningful section state, transluc
 
 ### Navigation
 
-The launcher is a minimal root navigation surface. It shows “Open menu” and exactly two 60px links—Accordion and Drilling—under the persistent menu header. Rows are extra-bold, separated by cyan-toned rules, and end in cyan forward chevrons. No implementation labels, status copy, or auxiliary controls appear to participants.
+The launcher is a minimal root navigation surface. It shows “Open menu” and exactly four 60px links—Accordion, Drilling, With avatar, and Without avatar—under the persistent menu header. Rows are extra-bold, separated by cyan-toned rules, and end in cyan forward chevrons. No implementation labels, status copy, or auxiliary controls appear to participants.
 
 Accordion triggers are full-width, extra-bold 44px rows with a CSS chevron that rotates on expansion. An open section gains a cyan top rule. Panels use compact section headings, wrapping chips, and translucent group dividers. The participant route uses native `<details>` disclosure. The visually equivalent custom button/panel implementation remains available only through its direct internal query route and is not linked from the launcher.
 
 Drill-in root rows use the same extra-bold heading treatment on 52px full-width targets, with a cyan forward chevron and a quiet translucent-blue hover field. Selecting a row pushes a history entry and replaces the root with a child screen. The 56px child header is pinned inside the scroller: a cyan Back control occupies the left track and the category title remains centered independently. Back returns through browser history; both the visible control and browser Back restore focus to the originating root row. Direct hash entry is normalized into the same root-to-child history path.
 
-The child screen enters with a restrained 180ms right-to-left settle using the standard expressive easing. Under `prefers-reduced-motion: reduce`, the entrance animation is removed and all state transitions are effectively immediate. The footer remains fixed while either root or child content scrolls. From either journey, the visible Close control and Escape both return to the launcher.
+The child screen enters with a restrained 180ms right-to-left settle using the standard expressive easing. Under `prefers-reduced-motion: reduce`, the entrance animation is removed and all state transitions are effectively immediate. The footer remains fixed while either root or child content scrolls. From Accordion or Drilling, the visible Close control and Escape both return to the launcher.
+
+#### Avatar Placement Controls
+
+The avatar-test app bar uses a black field, lime Met Office mark and hamburger, white Met Office/MAVIS labeling, and the established 34px yellow profile circle. With avatar treats that circle as a button and opens a compact navy popover with a cyan keyline, strong response text, and a raised-blue Close button. Without avatar removes the button from the bar and repeats the circle inside the drawer beside Account as identity only; it must not gain button semantics or interaction styling.
+
+The hamburger is a 44px icon button. It opens the shared full-height modal drawer, which contains the native `<details name="primary-navigation">` accordion and retains the fixed header/body/footer structure. Closing by button or Escape restores focus to the hamburger. The drawer's focus loop and inert background are functional requirements, not optional polish.
 
 #### Desktop Mega-navigation
 
@@ -385,9 +423,13 @@ The mobile latitude/longitude control uses a 40px by 22px light track and a 24px
 - **Do** use cyan, lime, and yellow according to the Three-Signal Rule.
 - **Do** preserve visible keyboard focus, accurate expanded state, reduced-motion behavior, and semantic control structure.
 - **Do** make visible Back and browser Back restore the originating drill-in row's focus.
-- **Do** expose only Accordion and Drilling on the participant launcher.
+- **Do** expose Accordion, Drilling, With avatar, and Without avatar on the participant launcher.
+- **Do** keep both avatar-placement routes visually matched apart from the avatar's interactive location.
+- **Do** contain drawer focus, make the app bar and map workspace inert, and restore focus to the hamburger on close.
+- **Do** keep the Without avatar account row noninteractive.
+- **Do** use Prototype Workspace Gray for the deliberately plain map placeholder only.
 - **Do** center only the 390px by 844px frame on desktop and use the full viewport on mobile.
-- **Do** make Close and Escape return to the launcher from either journey.
+- **Do** make Close and Escape return to the launcher from Accordion and Drilling.
 - **Do** keep the desktop mega-navigation at 1024px and wider, with Map selected and its secondary bar visible by default.
 - **Do** preserve all 26 supplied map layers in the six-column desktop panel and keep Briefing and Regional compact.
 - **Do** preserve desktop hover intent, click-to-pin behavior, Arrow/Enter/Space entry, and Escape focus return.
@@ -404,6 +446,8 @@ The mobile latitude/longitude control uses a 40px by 22px light track and a 24px
 - **Don't** animate state in a way that survives the user's reduced-motion preference.
 - **Don't** put explanatory copy or auxiliary controls around the participant frame.
 - **Don't** link the custom JavaScript accordion from the participant launcher.
+- **Don't** make the avatar in the Without avatar drawer look or behave like a button.
+- **Don't** treat the neutral map placeholder as a production weather-map treatment or a new general-purpose surface color.
 - **Don't** collapse the desktop navigation into the mobile frame or treat the two prototypes as one responsive document.
 - **Don't** open desktop menus on zero-delay pointer transit or dismiss a clicked-and-pinned panel on pointer leave.
 - **Don't** rotate Briefing or Regional chevrons or remove the Map sub-navigation to make room for their overlays.
